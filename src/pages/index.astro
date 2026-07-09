@@ -24,68 +24,73 @@ const faqs = await getCollection('faqs', ({ data }) => {
     </section>
 
 <!-- Welcome Section Redesign (Inline) -->
-    <section class="welcome" style="background: white; padding: 100px 0;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center;">
-            <div style="display: flex; flex-direction: column;">
-                <h2 style="font-family: 'Gotham', sans-serif; font-size: 52px; font-weight: 800; line-height: 1.1; color: #333; margin: 0; text-transform: uppercase;">
+    <!-- Welcome Section (Tailwind CSS) -->
+    <section class="bg-white py-20 px-5 md:px-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
+            <div class="flex flex-col">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-[#333] leading-[1.1] uppercase font-['Gotham',sans-serif]">
                     WELCOME<br/>
                     TO FRIGIDAIRE<br/>
-                    <span style="color: #DB4155;">OUTDOOR LIVING</span>
+                    <span class="text-[#DB4155]">OUTDOOR LIVING</span>
                 </h2>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <h3 style="font-family: 'Gotham', sans-serif; font-size: 24px; font-weight: 700; color: #333; margin: 0;">
+            <div class="flex flex-col gap-4">
+                <h3 class="text-2xl font-bold text-[#333] font-['Gotham',sans-serif]">
                     Where innovation meets the open air.
                 </h3>
-                <p style="font-family: 'Gotham', sans-serif; font-size: 16px; color: #666; line-height: 1.8; margin: 0;">
+                <p class="text-[#666] text-base leading-relaxed font-['Gotham',sans-serif]">
                     Building on over 100 years of trusted performance, Frigidaire is stepping outside &mdash; creating durable, high-performance outdoor solutions designed for effortless living.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Weather Resistant Design Section (Tailwind CSS) -->
-<!-- Weather Resistant Design Video Section -->
-    <section class="bg-[#f8f8f8] py-20 overflow-hidden">
-        <div class="max-w-[1400px] mx-auto px-8 md:px-12 grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-            
-            <!-- Left Text -->
-            <div class="flex flex-col justify-center lg:pr-8">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-[#DB4155] leading-[1.1] uppercase font-['Gotham',sans-serif] tracking-tight">
-                    WEATHER<br/>
-                    RESISTANT<br/>
-                    DESIGN
-                </h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-[#555555] leading-tight uppercase font-['Gotham',sans-serif] mt-4">
-                    WITH<br/>
-                    ENERGY<br/>
-                    EFFICIENCY
-                </h3>
+<!-- Product Features Section (Tailwind CSS) -->
+    <section class="bg-white pt-20" id="product">
+        <div class="text-center">
+            <div class="bg-[#DB4155] text-white py-4 px-8 block w-full text-lg font-semibold uppercase tracking-widest">
+                MEET OUR FAMILY-FIRST INNOVATIONS
             </div>
-
-            <!-- Middle Video -->
-            <div class="flex justify-center items-center relative z-10">
-                <div class="bg-white p-6 shadow-[0_20px_50px_rgba(0,0,0,0.1)] w-full max-w-[500px]">
-                    <video 
-                        src="https://media.frigidaireoutdoorliving.com/ENG-LAST-FEATURES-VID.mp4" 
-                        autoplay 
-                        loop 
-                        muted 
-                        playsinline 
-                        class="w-full h-auto object-cover"
-                    ></video>
-                </div>
-            </div>
-
-            <!-- Right Text -->
-            <div class="flex flex-col justify-start lg:pl-8 pt-8 lg:pt-0">
-                <p class="text-[#444444] text-lg md:text-xl font-medium leading-relaxed font-['Gotham',sans-serif]">
-                    IPx4 water-resistant design with UL certification for safe, year-rounded outdoor use.
-                </p>
-            </div>
-
+        </div>
+        <div class="w-full text-center">
+            <video autoplay loop muted playsinline class="w-full h-auto block">
+                <source src="https://media.frigidaireoutdoorliving.com/ENG-LAST-FEATURES-VID.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
+
+
+    <!-- Image Carousel (Tailwind CSS) -->
+    <section class="bg-white py-16">
+        <div class="relative max-w-7xl mx-auto px-10 md:px-16">
+            <div class="swiper mySwiper w-full h-full">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide flex justify-center items-center text-center">
+                        <img src="/wp-content/uploads/2026/01/OPEN-GRILL-COOKING-FOOD-1.webp" alt="Open Grill Cooking Food" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
+                    </div>
+                    <div class="swiper-slide flex justify-center items-center text-center">
+                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-FrontFace.webp" alt="Grill Front Face" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
+                    </div>
+                    <div class="swiper-slide flex justify-center items-center text-center">
+                        <img src="/wp-content/uploads/2026/01/GRILL-OPNER-CLOSEUP-1.webp" alt="Grill Opener Closeup" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
+                    </div>
+                    <div class="swiper-slide flex justify-center items-center text-center">
+                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-45d-TopLeft.webp" alt="Grill 45 Degree View" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
+                    </div>
+                    <div class="swiper-slide flex justify-center items-center text-center">
+                        <img src="/wp-content/uploads/2026/01/OPEN-HEATED-GRILL-1.webp" alt="Open Heated Grill" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
+                    </div>
+                    <div class="swiper-slide flex justify-center items-center text-center">
+                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-BackFace.webp" alt="Grill Back Face" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+                <div class="swiper-button-prev !text-[#DB4155] after:!text-2xl after:!font-bold"></div>
+                <div class="swiper-button-next !text-[#DB4155] after:!text-2xl after:!font-bold"></div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="getting-started">
         <div class="getting-started-header">GETTING STARTED WITH YOUR GRILL</div>
