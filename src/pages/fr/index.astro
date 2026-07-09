@@ -92,71 +92,126 @@ const faqs = await getCollection('faqs', ({ data }) => {
     </section>
 
 
-    <section class="getting-started">
-        <div class="getting-started-header">BIEN D�MARRER AVEC VOTRE GRIL</div>
-        <div class="tabs">
-            <button class="tab active" onclick="switchTab(0)">� PROPOS DU GRILL BBQ</button>
-            <button class="tab" onclick="switchTab(1)">CONTENU DE LA BO�TE</button>
-            <button class="tab" onclick="switchTab(2)">S�CURIT� ET CERTIFICATION</button>
+<!-- Getting Started Tabs (Tailwind CSS) -->
+    <section class="bg-white">
+        <!-- Header -->
+        <div class="bg-[#DB4155] text-white py-4 px-8 text-center text-lg font-semibold uppercase tracking-widest">
+            POUR COMMENCER AVEC VOTRE BARBECUE
         </div>
-        <div class="container">
-            <div class="tab-content active" id="tab-0">
-                <div class="feature-image">
-                    <img src="/wp-content/uploads/2026/01/DUAL-ELEC-GRILL-DIMENTIONS-1-scaled.webp" alt="Grill Specifications with Dimensions" loading="lazy" width="1200" height="849" />
+        
+        <!-- Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 md:gap-16 py-8 px-4 bg-white">
+            <button class="tab-btn active text-sm md:text-base font-semibold text-[#666] border-b-4 border-transparent uppercase pb-2 transition-all duration-300" data-target="tab-0">À PROPOS DU BARBECUE</button>
+            <button class="tab-btn text-sm md:text-base font-semibold text-[#666] border-b-4 border-transparent uppercase pb-2 transition-all duration-300" data-target="tab-1">QU'Y A-T-IL DANS LA BOÎTE ?</button>
+            <button class="tab-btn text-sm md:text-base font-semibold text-[#666] border-b-4 border-transparent uppercase pb-2 transition-all duration-300" data-target="tab-2">SÉCURITÉ ET CERTIFICATION</button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="max-w-7xl mx-auto px-5 md:px-10 pb-20">
+            
+            <!-- Tab 0: ABOUT THE GRILL -->
+            <div class="tab-pane active grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center" id="tab-0">
+                <div class="text-center">
+                    <img src="https://frigidaireoutdoorliving.com/wp-content/uploads/2026/01/DUAL-ELEC-GRILL-DIMENTIONS-1-scaled.webp" alt="Grill Specifications with Dimensions" loading="lazy" width="1200" height="849" class="w-full h-auto object-cover" />
                 </div>
-                <div class="tab-text-box">
-                    <h3>DEUX �L�MENTS CHAUFFANTS HAUTE PERFORMANCE <span style="color: #DB4155;">ATTEIGNENT JUSQU'� 700 �F</span></h3>
-                    <ul>
-                        <li>Grande surface de cuisson en fonte de 19" x 17" avec grille de maintien au chaud int�gr�e.</li>
-                        <li>Pr�chauffe en seulement 20 minutes et comprend deux sondes de cuisson pour un contr�le pr�cis de la temp�rature.</li>
-                        <li>Tablettes lat�rales pivotantes offrant un espace pratique pour la pr�paration et le service.</li>
-                        <li>Conception r�sistante � l'eau IPX4 avec certification UL pour une utilisation ext�rieure s�curitaire.</li>
-                        <li>Alimentation �lectrique de 1750 W / 120 V, couverte par une garantie du fabricant de 2 ans.</li>
+                <div class="bg-[#f5f5f5] p-8 md:p-10 rounded-lg">
+                    <h3 class="text-2xl md:text-3xl font-bold text-[#333] mb-6 uppercase leading-tight font-['Gotham',sans-serif]">LES DOUBLES ÉLÉMENTS CHAUFFANTS HAUTE PERFORMANCE <span class="text-[#DB4155]">ATTEIGNENT JUSQU'À 700&deg;F</span></h3>
+                    <ul class="space-y-3">
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Grande surface de cuisson en fonte de 19" x 17" avec grille de réchaud intégrée.</li>
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Chauffe en seulement 20 minutes et comprend deux sondes à viande pour un contrôle précis de la température.</li>
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Des tablettes latérales pivotantes offrent un espace de préparation et de service pratique.</li>
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Construction résistante à l'eau IPX4 avec certification UL pour une utilisation extérieure sécuritaire.</li>
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Alimentation électrique 1750W / 120V couverte par une garantie constructeur de deux ans.</li>
                     </ul>
                 </div>
             </div>
-            <div class="tab-content" id="tab-1">
-                <div class="tab-text-box">
-                    <h3>TOUT CE DONT VOUS AVEZ BESOIN POUR COMMENCER <span style="color: #DB4155;">D�S LA SORTIE DE LA BO�TE</span></h3>
-                    <ul>
-                        <li>Gril �lectrique assembl� avec bac de r�cup�ration des graisses int�gr�.</li>
-                        <li>Support de base avec panneau comprenant un ouvre-bouteille et un support pour le cordon d'alimentation.</li>
-                        <li>Tablettes lat�rales et roues pour plus d'espace de travail et une meilleure mobilit�.</li>
-                        <li>Sondes de temp�rature pour la viande assurant un contr�le pr�cis de la cuisson.</li>
+
+            <!-- Tab 1: WHAT'S IN THE BOX -->
+            <div class="tab-pane hidden grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center" id="tab-1">
+                <div class="bg-[#f5f5f5] p-8 md:p-10 rounded-lg">
+                    <h3 class="text-2xl md:text-3xl font-bold text-[#333] mb-6 uppercase leading-tight font-['Gotham',sans-serif]">TOUT CE DONT VOUS AVEZ BESOIN POUR COMMENCER <span class="text-[#DB4155]">DÈS LA SORTIE DE LA BOÎTE</span></h3>
+                    <ul class="space-y-3">
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Barbecue électrique assemblé avec bac à graisse intégré.</li>
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Support de base avec décapsuleur et support de cordon d'alimentation.</li>
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Tablettes latérales et roues pour plus d'espace de travail et de mobilité.</li>
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Sondes de température à viande pour un contrôle précis de la cuisson.</li>
                     </ul>
                 </div>
-                <div style="position: relative; background: #DB4155; clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%); padding: 40px;">
-                    <img src="/wp-content/uploads/2026/01/BOX-1-1024x645.webp" alt="Box Contents" loading="lazy" width="1024" height="645" style="width: 100%; height: auto; display: block;" />
+                <div class="relative bg-[#DB4155] p-10" style="clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);">
+                    <img src="/wp-content/uploads/2026/01/BOX-1-1024x645.webp" alt="Box Contents" loading="lazy" width="1024" height="645" class="w-full h-auto block" />
                 </div>
             </div>
-            <div class="tab-content" id="tab-2">
-                <div class="tab-text-box">
-                    <h3><span style="color: #DB4155;">ATTENTION :</span> RISQUE DE CHOC �LECTRIQUE</h3>
-                    <ul>
-                        <li>Gardez la connexion de la rallonge s�che et hors du sol.</li>
-                        <li>Pour assurer une protection continue contre le risque de choc �lectrique, branchez uniquement sur des prises correctement mises � la terre.</li>
-                        <li>Usage domestique uniquement.</li>
-                        <li>Ne pas immerger dans l'eau.</li>
+
+            <!-- Tab 2: SAFETY & CERTIFICATION -->
+            <div class="tab-pane hidden grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 md:gap-16 items-start" id="tab-2">
+                <div class="bg-[#f5f5f5] p-8 md:p-10 rounded-lg">
+                    <h3 class="text-2xl md:text-3xl font-bold text-[#333] mb-6 uppercase leading-tight font-['Gotham',sans-serif]"><span class="text-[#DB4155]">ATTENTION :</span> RISQUE DE CHOC ÉLECTRIQUE</h3>
+                    <ul class="space-y-3 mb-6">
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Gardez la connexion de la rallonge au sec et hors du sol.</li>
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Pour garantir une protection continue contre les risques de chocs électriques, connectez uniquement à des prises correctement mises à la terre.</li>
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Usage domestique uniquement.</li>
+                        <li class="relative pl-6 text-[#666] text-base leading-relaxed before:content-['▸'] before:absolute before:left-0 before:text-[#DB4155] before:font-bold">Ne pas plonger dans l'eau.</li>
                     </ul>
-                    <a href="/wp-content/uploads/2025/12/MANUAL-TEG-003-C-FRIGIDAIRE-FREE-STANDING-FOLDING-ELECTRIC-DUAL-ELEMENT-GRILL.pdf" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; background: #ccc; color: #333;">LIRE LE MANUEL AVANT UTILISATION ?</a>
+                    <a href="/wp-content/uploads/2025/12/MANUAL-TEG-003-C-FRIGIDAIRE-FREE-STANDING-FOLDING-ELECTRIC-DUAL-ELEMENT-GRILL.pdf" target="_blank" class="inline-block bg-[#ccc] text-[#333] font-semibold py-3 px-6 rounded-full transition-colors hover:bg-gray-300">LIRE LE MANUEL AVANT UTILISATION &rarr;</a>
                 </div>
                 <div>
-                    <div class="cert-badges" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
-                        <div style="background: #f5f5f5; padding: 40px; text-align: center; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                            <img src="/wp-content/uploads/2025/12/FRI-LISTED-300x180.webp" alt="UL Listed" loading="lazy" width="300" height="180" style="max-width: 200px;" />
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="bg-[#f5f5f5] p-10 text-center rounded-lg flex items-center justify-center">
+                            <img src="/wp-content/uploads/2025/12/FRI-LISTED-300x180.webp" alt="UL Listed" loading="lazy" width="300" height="180" class="max-w-[200px]" />
                         </div>
-                        <div style="background: #f5f5f5; padding: 40px; text-align: center; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                            <h2 style="color: #DB4155; font-size: 72px; font-weight: 700; margin: 0;">IPX4</h2>
+                        <div class="bg-[#f5f5f5] p-10 text-center rounded-lg flex items-center justify-center">
+                            <h2 class="text-[#DB4155] text-5xl md:text-7xl font-bold m-0 font-['Gotham',sans-serif]">IPX4</h2>
                         </div>
                     </div>
-                    <div style="text-align: left; color: #666;">
-                        <p style="margin-bottom: 20px;">Ce grill Frigidaire Outdoor Living est certifi� UL pour les �tats-Unis et le Canada, garantissant qu'il r�pond � des normes de s�curit� strictes. Il est �galement class� IPX4 pour les intemp�ries, offrant une protection fiable contre les �claboussures d'eau pour une utilisation ext�rieure s�re.</p>
-                        <a href="/wp-content/uploads/2025/12/MANUAL-TEG-003-C-FRIGIDAIRE-FREE-STANDING-FOLDING-ELECTRIC-DUAL-ELEMENT-GRILL.pdf" download class="btn" style="background: #DB4155; color: white;">T�L�CHARGER LE MANUEL D'UTILISATION</a>
+                    <div class="text-left text-[#666] font-['Gotham',sans-serif]">
+                        <p class="mb-6 leading-relaxed">Ce barbecue Frigidaire Outdoor Living est certifié UL pour les États-Unis et le Canada, garantissant qu'il répond aux normes de sécurité strictes. Il est également classé IPX4 pour sa résistance aux intempéries, offrant une protection fiable contre les éclaboussures d'eau pour une utilisation extérieure en toute sécurité.</p>
+                        <a href="/wp-content/uploads/2025/12/MANUAL-TEG-003-C-FRIGIDAIRE-FREE-STANDING-FOLDING-ELECTRIC-DUAL-ELEMENT-GRILL.pdf" download class="inline-block bg-[#DB4155] text-white font-semibold py-3 px-6 rounded-full transition-colors hover:bg-[#c23648]">TÉLÉCHARGER LE MANUEL</a>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
+
+    <!-- Tailwind JS Tab Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panes = document.querySelectorAll('.tab-pane');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active from all tabs
+                    tabs.forEach(t => {
+                        t.classList.remove('active', 'border-[#DB4155]', 'text-[#DB4155]');
+                        t.classList.add('border-transparent', 'text-[#666]');
+                    });
+                    
+                    // Add active to clicked
+                    tab.classList.remove('border-transparent', 'text-[#666]');
+                    tab.classList.add('active', 'border-[#DB4155]', 'text-[#DB4155]');
+                    
+                    // Hide all panes
+                    panes.forEach(pane => {
+                        pane.classList.add('hidden');
+                    });
+                    
+                    // Show target pane
+                    const target = document.getElementById(tab.getAttribute('data-target'));
+                    if(target) {
+                        target.classList.remove('hidden');
+                    }
+                });
+            });
+            
+            // Set initial active state correctly based on HTML classes
+            const initialActiveTab = document.querySelector('.tab-btn.active');
+            if (initialActiveTab) {
+                initialActiveTab.classList.remove('border-transparent', 'text-[#666]');
+                initialActiveTab.classList.add('border-[#DB4155]', 'text-[#DB4155]');
+            }
+        });
+    </script>
 
     <!-- Where to Buy -->
     <section class="where-to-buy" id="where-to-buy">

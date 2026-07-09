@@ -1,98 +1,7 @@
----
-import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+const fs = require('fs');
 
-const retailers = await getCollection('retailers');
-retailers.sort((a, b) => a.data.display_order - b.data.display_order);
-
-const faqs = await getCollection('faqs', ({ data }) => {
-  return data.language === 'en';
-});
----
-<Layout title="Frigidaire Outdoor Living - Electric Dual Element Grill" lang="en">
-
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Experience outdoor cooking, Reinvented.</h1>
-                <p>Introducing the Frigidaire Dual Element Electric Grill � Power, Precision, and Style for Modern Outdoor Living.</p>
-                <a href="/home-page/freestanding-folding-electric-dual-element-grill-guide-overview/" class="btn" aria-label="Learn more about the Frigidaire Dual Element Electric Grill">Learn more</a>
-            </div>
-        </div>
-    </section>
-
-<!-- Welcome Section Redesign (Inline) -->
-    <!-- Welcome Section (Tailwind CSS) -->
-    <section class="bg-white py-20 px-5 md:px-10">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
-            <div class="flex flex-col">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-[#333] leading-[1.1] uppercase font-['Gotham',sans-serif]">
-                    WELCOME<br/>
-                    TO FRIGIDAIRE<br/>
-                    <span class="text-[#DB4155]">OUTDOOR LIVING</span>
-                </h2>
-            </div>
-            <div class="flex flex-col gap-4">
-                <h3 class="text-2xl font-bold text-[#333] font-['Gotham',sans-serif]">
-                    Where innovation meets the open air.
-                </h3>
-                <p class="text-[#666] text-base leading-relaxed font-['Gotham',sans-serif]">
-                    Building on over 100 years of trusted performance, Frigidaire is stepping outside &mdash; creating durable, high-performance outdoor solutions designed for effortless living.
-                </p>
-            </div>
-        </div>
-    </section>
-
-<!-- Product Features Section (Tailwind CSS) -->
-    <section class="bg-white pt-20" id="product">
-        <div class="text-center">
-            <div class="bg-[#DB4155] text-white py-4 px-8 block w-full text-lg font-semibold uppercase tracking-widest">
-                MEET OUR FAMILY-FIRST INNOVATIONS
-            </div>
-        </div>
-        <div class="w-full text-center">
-            <video autoplay loop muted playsinline class="w-full h-auto block">
-                <source src="https://media.frigidaireoutdoorliving.com/ENG-LAST-FEATURES-VID.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-    </section>
-
-
-    <!-- Image Carousel (Tailwind CSS) -->
-    <section class="bg-white py-16">
-        <div class="relative max-w-7xl mx-auto px-10 md:px-16">
-            <div class="swiper mySwiper w-full h-full">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide flex justify-center items-center text-center">
-                        <img src="/wp-content/uploads/2026/01/OPEN-GRILL-COOKING-FOOD-1.webp" alt="Open Grill Cooking Food" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
-                    </div>
-                    <div class="swiper-slide flex justify-center items-center text-center">
-                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-FrontFace.webp" alt="Grill Front Face" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
-                    </div>
-                    <div class="swiper-slide flex justify-center items-center text-center">
-                        <img src="/wp-content/uploads/2026/01/GRILL-OPNER-CLOSEUP-1.webp" alt="Grill Opener Closeup" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
-                    </div>
-                    <div class="swiper-slide flex justify-center items-center text-center">
-                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-45d-TopLeft.webp" alt="Grill 45 Degree View" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
-                    </div>
-                    <div class="swiper-slide flex justify-center items-center text-center">
-                        <img src="/wp-content/uploads/2026/01/OPEN-HEATED-GRILL-1.webp" alt="Open Heated Grill" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
-                    </div>
-                    <div class="swiper-slide flex justify-center items-center text-center">
-                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-BackFace.webp" alt="Grill Back Face" loading="lazy" width="1200" height="800" class="w-full h-auto object-cover">
-                    </div>
-                </div>
-                <div class="swiper-button-prev !text-[#DB4155] after:!text-2xl after:!font-bold"></div>
-                <div class="swiper-button-next !text-[#DB4155] after:!text-2xl after:!font-bold"></div>
-            </div>
-        </div>
-    </section>
-
-
-<!-- Getting Started Tabs (Tailwind CSS) -->
+const replacementTabs = `
+    <!-- Getting Started Tabs (Tailwind CSS) -->
     <section class="bg-white">
         <!-- Header -->
         <div class="bg-[#DB4155] text-white py-4 px-8 text-center text-lg font-semibold uppercase tracking-widest">
@@ -212,64 +121,49 @@ const faqs = await getCollection('faqs', ({ data }) => {
             }
         });
     </script>
+`;
 
-    <!-- Where to Buy -->
-    <section class="where-to-buy" id="where-to-buy">
-        <div class="container">
-            <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 10px;"><span style="color: #DB4155;">AVAILABLE</span> AT</h2>
-            <h3 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">TRUSTED RETAILERS</h3>
-            <div class="retailers-grid" id="retailers-container">{retailers.map((retailer) => (
-                    <a href={retailer.data.url} target="_blank" rel="noopener" class="retailer-card" aria-label={`Buy ${retailer.data.name} - ${retailer.data.availability}`} style="--card-hover-bg: #DB4155; --title-color: #333; --availability-color: #DB4155; --button-bg: #DB4155; --button-text: #fff; --star-color: #FFD700;">
-                        <div class="retailer-image-wrap">
-                            <img src={retailer.data.default_image || ''} alt={retailer.data.name} class="retailer-img-default" loading="lazy" width="600" height="160" />
-                            <img src={retailer.data.hover_image || ''} alt={retailer.data.name} class="retailer-img-hover" loading="lazy" width="600" height="160" />
-                        </div>
-                        <div class="retailer-info">
-                            <h3 class="retailer-name">{retailer.data.name}</h3>
-                            <p class="retailer-availability">{retailer.data.availability}</p>
-                            <div class="retailer-btn">BUY NOW</div>
-                        </div>
-                    </a>
-                ))}</div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section" id="faq">
-        <div class="container">
-            <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 10px;">FREQUENTLY</h2>
-            <h3 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">ASKED <span style="color: #DB4155;">QUESTIONS</span></h3>
-            <div class="faq-grid" id="faq-container">
-                <!-- FAQs loaded dynamically -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2>HAVE <span>AN OTHER QUESTION?</span></h2>
-                <h3>Fill Out the Form.</h3>
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="firstName" placeholder="First name" required />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="lastName" placeholder="Last name" required />
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="E-mail" required />
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Your message" rows="5" required></textarea>
-                    </div>
-                    <div id="cf-turnstile-contact" class="cf-turnstile" data-sitekey="0x4AAAAAADJQp0TJa6LotiLr" data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError" data-expired-callback="onTurnstileExpired"></div>
-                    <button type="submit" class="submit-btn" id="contact-submit-btn">Send</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
+function processAstroFile(file, isFrench) {
+    let content = fs.readFileSync(file, 'utf8');
     
-</Layout><div class="text-9xl bg-purple-500">TEST</div>
+    // Find the getting-started section
+    const startIdx = content.indexOf('    <section class="getting-started">');
+    const endIdx = content.indexOf('    <!-- Where to Buy -->');
+    
+    if (startIdx !== -1 && endIdx !== -1) {
+        let finalHTML = replacementTabs;
+        if (isFrench) {
+            finalHTML = finalHTML.replace('GETTING STARTED WITH YOUR GRILL', "POUR COMMENCER AVEC VOTRE BARBECUE");
+            finalHTML = finalHTML.replace('ABOUT THE GRILL', "À PROPOS DU BARBECUE");
+            finalHTML = finalHTML.replace("WHAT'S IN THE BOX?", "QU'Y A-T-IL DANS LA BOÎTE ?");
+            finalHTML = finalHTML.replace('SAFETY & CERTIFICATION', "SÉCURITÉ ET CERTIFICATION");
+            finalHTML = finalHTML.replace('DUAL HIGH-PERFORMANCE HEATING ELEMENTS <span class="text-[#DB4155]">REACH UP TO 700&deg;F</span>', "LES DOUBLES ÉLÉMENTS CHAUFFANTS HAUTE PERFORMANCE <span class=\"text-[#DB4155]\">ATTEIGNENT JUSQU'À 700&deg;F</span>");
+            finalHTML = finalHTML.replace('Large 19" x 17" cast iron cooking surface with integrated warming rack.', "Grande surface de cuisson en fonte de 19\" x 17\" avec grille de réchaud intégrée.");
+            finalHTML = finalHTML.replace('Heats up in just 20 minutes and includes two meat probes for accurate temperature monitoring.', "Chauffe en seulement 20 minutes et comprend deux sondes à viande pour un contrôle précis de la température.");
+            finalHTML = finalHTML.replace('Pivoting side shelves provide convenient prep and serving space.', "Des tablettes latérales pivotantes offrent un espace de préparation et de service pratique.");
+            finalHTML = finalHTML.replace('IPX4 water-resistant construction with UL certification for safe outdoor use.', "Construction résistante à l'eau IPX4 avec certification UL pour une utilisation extérieure sécuritaire.");
+            finalHTML = finalHTML.replace("1750W / 120V electric power supported by a two year manufacturer's warranty.", "Alimentation électrique 1750W / 120V couverte par une garantie constructeur de deux ans.");
+            
+            finalHTML = finalHTML.replace('EVERYTHING YOU NEED TO GET STARTED <span class="text-[#DB4155]">RIGHT OUT OF THE BOX</span>', "TOUT CE DONT VOUS AVEZ BESOIN POUR COMMENCER <span class=\"text-[#DB4155]\">DÈS LA SORTIE DE LA BOÎTE</span>");
+            finalHTML = finalHTML.replace('Electric grill assembled with integrated grease tray.', "Barbecue électrique assemblé avec bac à graisse intégré.");
+            finalHTML = finalHTML.replace('Panel base support featuring bottle opener and power cord holder.', "Support de base avec décapsuleur et support de cordon d'alimentation.");
+            finalHTML = finalHTML.replace('Side shelves and wheels for added workspace and mobility.', "Tablettes latérales et roues pour plus d'espace de travail et de mobilité.");
+            finalHTML = finalHTML.replace('Meat temperature probes for precise cooking control.', "Sondes de température à viande pour un contrôle précis de la cuisson.");
+            
+            finalHTML = finalHTML.replace('<span class="text-[#DB4155]">CAUTION :</span> RISK OF ELECTRIC SHOCK', "<span class=\"text-[#DB4155]\">ATTENTION :</span> RISQUE DE CHOC ÉLECTRIQUE");
+            finalHTML = finalHTML.replace('Keep extension cord connection dry and off the ground.', "Gardez la connexion de la rallonge au sec et hors du sol.");
+            finalHTML = finalHTML.replace('To ensure continued protection against risk of electric shock, connect to properly grounded outlets only.', "Pour garantir une protection continue contre les risques de chocs électriques, connectez uniquement à des prises correctement mises à la terre.");
+            finalHTML = finalHTML.replace('Household use only.', "Usage domestique uniquement.");
+            finalHTML = finalHTML.replace('Do not immerse in water.', "Ne pas plonger dans l'eau.");
+            finalHTML = finalHTML.replace('READ MANUAL BEFORE USE &rarr;', "LIRE LE MANUEL AVANT UTILISATION &rarr;");
+            
+            finalHTML = finalHTML.replace('This Frigidaire Outdoor Living grill is UL certified for both the U.S. and Canada, ensuring it meets strict safety standards. It is also IPX4 weather-rated, providing reliable protection against splashing water for safe outdoor use.', "Ce barbecue Frigidaire Outdoor Living est certifié UL pour les États-Unis et le Canada, garantissant qu'il répond aux normes de sécurité strictes. Il est également classé IPX4 pour sa résistance aux intempéries, offrant une protection fiable contre les éclaboussures d'eau pour une utilisation extérieure en toute sécurité.");
+            finalHTML = finalHTML.replace('DOWNLOAD USER MANUAL', "TÉLÉCHARGER LE MANUEL");
+        }
+        content = content.substring(0, startIdx) + finalHTML.trim() + '\n\n' + content.substring(endIdx);
+        fs.writeFileSync(file, content);
+    }
+}
+
+processAstroFile('src/pages/index.astro', false);
+processAstroFile('src/pages/fr/index.astro', true);
