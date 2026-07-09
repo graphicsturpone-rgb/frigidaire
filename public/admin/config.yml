@@ -2,6 +2,7 @@ backend:
   name: github
   repo: graphicsturpone-rgb/frigidaire
   branch: main
+  base_url: https://decap-cms-oauth.workers.dev
 
 # Enable local development server
 local_backend: true
