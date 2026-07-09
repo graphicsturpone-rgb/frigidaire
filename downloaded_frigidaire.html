@@ -1,23 +1,14 @@
----
-export interface Props {
-    title: string;
-    lang: string;
-}
-const { title, lang } = Astro.props;
----
 <!DOCTYPE html>
-<html lang={lang}>
+<html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Frigidaire Outdoor Living � Dual Element Electric Grill. 700�F, IPX4 rated, UL certified. Free shipping, 2-year warranty.">
-    <title>{title}</title>
+    <meta name="description" content="Frigidaire Outdoor Living – Dual Element Electric Grill. 700°F, IPX4 rated, UL certified. Free shipping, 2-year warranty.">
+    <title>Frigidaire Outdoor Living - Electric Dual Element Grill</title>
     <link rel="icon" href="/wp-content/uploads/2025/12/cropped-FRIGIDAIRE-FAV-1-scaled-1-32x32.jpg" sizes="32x32">
     <link rel="preload" as="image" href="/wp-content/uploads/2025/12/FOL-first-banner-scaled-1.webp" type="image/webp">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <style is:global>
-
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +22,7 @@ const { title, lang } = Astro.props;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -256,7 +247,7 @@ const { title, lang } = Astro.props;
 
         .carousel-container {
             position: relative;
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 60px;
         }
@@ -388,7 +379,7 @@ const { title, lang } = Astro.props;
         }
 
         .tab-text li:before {
-            content: '?';
+            content: '▸';
             position: absolute;
             left: 0;
             color: #DB4155;
@@ -864,133 +855,209 @@ const { title, lang } = Astro.props;
                 gap: 15px;
             }
         }
-    
-
-        /* Redesigned Innovations Section */
-        .innovations-redesign {
-            background: #f8f8f8;
-            position: relative;
-            padding-bottom: 50px;
-        }
-        .innovations-content {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 60px 20px 20px 20px;
-        }
-        .innovations-text-grid {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: -150px;
-            position: relative;
-            z-index: 2;
-        }
-        .innovations-title h2 {
-            font-size: 52px;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-        .innovations-desc {
-            max-width: 350px;
-            font-size: 16px;
-            color: #666;
-            font-weight: 600;
-            line-height: 1.5;
-            padding-top: 10px;
-        }
-        .innovations-center-image {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .innovations-center-image img {
-            max-width: 75%;
-            height: auto;
-            display: inline-block;
-        }
-        .mini-carousel-container {
-            max-width: 900px;
-            margin: 40px auto 0;
-            position: relative;
-            padding: 0 50px;
-        }
-        .miniSwiper {
-            width: 100%;
-        }
-        .miniSwiper .swiper-slide {
-            text-align: center;
-        }
-        .miniSwiper .swiper-slide img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .mini-prev, .mini-next {
-            color: #DB4155;
-            --swiper-navigation-size: 24px;
-        }
-        @media (max-width: 768px) {
-            .innovations-text-grid {
-                flex-direction: column;
-                margin-bottom: 0;
-                text-align: center;
-            }
-            .innovations-title h2 {
-                font-size: 36px;
-            }
-            .innovations-desc {
-                margin: 20px auto 0;
-            }
-            .innovations-center-image img {
-                max-width: 100%;
-            }
-        }
-
     </style>
     <script src="/wp-content/uploads/language-redirect.js" defer></script>
     <script src="/wp-content/uploads/shared-header.js" defer></script>
-
-<!-- Language Redirect -->
-<script>
-    const userLang = navigator.language || navigator.userLanguage;
-    const isFrench = userLang.startsWith('fr');
-    const isCurrentFrench = window.location.pathname.includes('/fr');
-    if (isFrench && !isCurrentFrench) {
-        window.location.replace('/fr/');
-    } else if (!isFrench && isCurrentFrench) {
-        window.location.replace('/');
-    }
-</script>
-
-<!-- Premium Animations Injection -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<style>
-    html { scroll-behavior: smooth; }
-    body {
-        opacity: 0;
-        animation: fadeInBody 1.2s ease-in-out forwards;
-    }
-    @keyframes fadeInBody {
-        to { opacity: 1; }
-    }
-</style>
-
 </head>
 <body>
-    <header>
+    <!-- Header loaded by shared-header.js -->
 
-    </header>
     <main id="main-content">
-        <slot />
-    </main>
-    <footer class="site-footer">
 
-    </footer>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Experience outdoor cooking, Reinvented.</h1>
+                <p>Introducing the Frigidaire Dual Element Electric Grill – Power, Precision, and Style for Modern Outdoor Living.</p>
+                <a href="/home-page/freestanding-folding-electric-dual-element-grill-guide-overview/" class="btn" aria-label="Learn more about the Frigidaire Dual Element Electric Grill">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <div class="container">
+            <div class="welcome-content">
+                <div>
+                    <h2>WELCOME<br>TO FRIGIDAIRE<br><span>OUTDOOR LIVING</span></h2>
+                </div>
+                <div class="welcome-text">
+                    <h3>Where innovation meets the open air.</h3>
+                    <p>Building on over 100 years of trusted performance, Frigidaire is stepping outside — creating durable, high-performance outdoor solutions designed for effortless living.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Features -->
+    <section class="product-features" id="product">
+        <div class="section-header">
+            <div class="section-title">MEET OUR FAMILY-FIRST INNOVATIONS</div>
+        </div>
+        <div class="feature-video">
+            <video autoplay loop muted playsinline>
+                <source src="https://media.frigidaireoutdoorliving.com/ENG-LAST-FEATURES-VID.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <!-- Image Carousel -->
+    <section class="image-carousel">
+        <div class="carousel-container">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/OPEN-GRILL-COOKING-FOOD-1.webp" alt="Open Grill Cooking Food" loading="lazy" width="1200" height="800">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-FrontFace.webp" alt="Grill Front Face" loading="lazy" width="1200" height="800">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/GRILL-OPNER-CLOSEUP-1.webp" alt="Grill Opener Closeup" loading="lazy" width="1200" height="800">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-45d-TopLeft.webp" alt="Grill 45 Degree View" loading="lazy" width="1200" height="800">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/OPEN-HEATED-GRILL-1.webp" alt="Open Heated Grill" loading="lazy" width="1200" height="800">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-BackFace.webp" alt="Grill Back Face" loading="lazy" width="1200" height="800">
+                    </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started Tabs -->
+    <section class="getting-started">
+        <div class="getting-started-header">GETTING STARTED WITH YOUR GRILL</div>
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab(0)">ABOUT THE GRILL</button>
+            <button class="tab" onclick="switchTab(1)">WHAT'S IN THE BOX?</button>
+            <button class="tab" onclick="switchTab(2)">SAFETY & CERTIFICATION</button>
+        </div>
+        <div class="container">
+            <div class="tab-content active" id="tab-0">
+                <div class="feature-image">
+                    <img src="/wp-content/uploads/2026/01/DUAL-ELEC-GRILL-DIMENTIONS-1-scaled.webp" alt="Grill Specifications with Dimensions" loading="lazy" width="1200" height="849">
+                </div>
+                <div class="tab-text-box">
+                    <h3>DUAL HIGH-PERFORMANCE HEATING ELEMENTS <span>REACH UP TO 700°F</span></h3>
+                    <ul>
+                        <li>Large 19" x 17" cast iron cooking surface with integrated warming rack.</li>
+                        <li>Heats up in just 20 minutes and includes two meat probes for accurate temperature monitoring.</li>
+                        <li>Pivoting side shelves provide convenient prep and serving space.</li>
+                        <li>IPX4 water-resistant construction with UL certification for safe outdoor use.</li>
+                        <li>1750W / 120V electric power supported by a two year manufacturer's warranty.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="tab-1">
+                <div class="tab-text-box">
+                    <h3>EVERYTHING YOU NEED TO GET STARTED <span>RIGHT OUT OF THE BOX</span></h3>
+                    <ul>
+                        <li>Electric grill assembled with integrated grease tray.</li>
+                        <li>Panel base support featuring bottle opener and power cord holder.</li>
+                        <li>Side shelves and wheels for added workspace and mobility.</li>
+                        <li>Meat temperature probes for precise cooking control.</li>
+                    </ul>
+                </div>
+                <div style="position: relative; background: #DB4155; clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%); padding: 40px;">
+                    <img src="/wp-content/uploads/2026/01/BOX-1-1024x645.webp" alt="Box Contents" loading="lazy" width="1024" height="645" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+            <div class="tab-content" id="tab-2">
+                <div class="tab-text-box">
+                    <h3><span>CAUTION :</span> RISK OF ELECTRIC SHOCK</h3>
+                    <ul>
+                        <li>Keep extension cord connection dry and off the ground.</li>
+                        <li>To ensure continued protection against risk of electric shock, connect to properly grounded outlets only.</li>
+                        <li>Household use only.</li>
+                        <li>Do not immerse in water.</li>
+                    </ul>
+                    <a href="/wp-content/uploads/2025/12/MANUAL-TEG-003-C-FRIGIDAIRE-FREE-STANDING-FOLDING-ELECTRIC-DUAL-ELEMENT-GRILL.pdf" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; background: #ccc; color: #333;">READ MANUAL BEFORE USE →</a>
+                </div>
+                <div>
+                    <div class="cert-badges" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                        <div style="background: #f5f5f5; padding: 40px; text-align: center; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                            <img src="/wp-content/uploads/2025/12/FRI-LISTED-300x180.webp" alt="UL Listed" loading="lazy" width="300" height="180" style="max-width: 200px;">
+                        </div>
+                        <div style="background: #f5f5f5; padding: 40px; text-align: center; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                            <h2 style="color: #DB4155; font-size: 72px; font-weight: 700; margin: 0;">IPX4</h2>
+                        </div>
+                    </div>
+                    <div style="text-align: left; color: #666;">
+                        <p style="margin-bottom: 20px;">This Frigidaire Outdoor Living grill is UL certified for both the U.S. and Canada, ensuring it meets strict safety standards. It is also IPX4 weather-rated, providing reliable protection against splashing water for safe outdoor use.</p>
+                        <a href="/wp-content/uploads/2025/12/MANUAL-TEG-003-C-FRIGIDAIRE-FREE-STANDING-FOLDING-ELECTRIC-DUAL-ELEMENT-GRILL.pdf" download class="btn" style="background: #DB4155; color: white;">DOWNLOAD USER MANUAL</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Where to Buy -->
+    <section class="where-to-buy" id="where-to-buy">
+        <div class="container">
+            <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 10px;"><span style="color: #DB4155;">AVAILABLE</span> AT</h2>
+            <h3 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">TRUSTED RETAILERS</h3>
+            <div class="retailers-grid" id="retailers-container">
+                <!-- skeletons injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 10px;">FREQUENTLY</h2>
+            <h3 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">ASKED <span style="color: #DB4155;">QUESTIONS</span></h3>
+            <div class="faq-grid" id="faq-container">
+                <!-- FAQs loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>HAVE <span>AN OTHER QUESTION?</span></h2>
+                <h3>Fill Out the Form.</h3>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="firstName" placeholder="First name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="lastName" placeholder="Last name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+                    </div>
+                    <div id="cf-turnstile-contact" class="cf-turnstile" data-sitekey="0x4AAAAAADJQp0TJa6LotiLr" data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError" data-expired-callback="onTurnstileExpired"></div>
+                    <button type="submit" class="submit-btn" id="contact-submit-btn">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    </main><!-- /#main-content -->
+
+    <!-- Footer -->
+    
+<!-- Footer loaded by shared-footer.js -->
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
     <script>
-        // Initialize Swiper (deferred � wait for Swiper library to load)
+        // Initialize Swiper (deferred — wait for Swiper library to load)
         window.addEventListener('load', function() {
         const swiper = new Swiper('.mySwiper', {
             slidesPerView: 2,
@@ -1037,18 +1104,13 @@ const { title, lang } = Astro.props;
         // Load Retailers
         async function loadRetailers() {
             try {
-                
-                const querySnapshot = await window.getDocs(window.collection(window.db, "retailers"));
-                const retailers = [];
-                querySnapshot.forEach((doc) => { retailers.push(doc.data()); });
-                retailers.sort((a, b) => (Number(a.display_order) || 0) - (Number(b.display_order) || 0));
-                const data = { retailers: retailers };
-        
+                const response = await fetch('https://frigidaire-api.franco-p.workers.dev/api/retailers');
+                const data = await response.json();
                 const container = document.getElementById('retailers-container');
                 
                 container.innerHTML = data.retailers.map(retailer => {
                     return `
-                    <a href="${retailer.url}" target="_blank" rel="noopener" class="retailer-card" aria-label="Buy ${retailer.name} � ${retailer.availability}" style="
+                    <a href="${retailer.url}" target="_blank" rel="noopener" class="retailer-card" aria-label="Buy ${retailer.name} — ${retailer.availability}" style="
                         --card-hover-bg: ${retailer.hover_bg_color || '#DB4155'};
                         --title-color: #333;
                         --availability-color: #DB4155;
@@ -1075,15 +1137,8 @@ const { title, lang } = Astro.props;
         // Load FAQs
         async function loadFAQs() {
             try {
-                
-                const querySnapshot = await window.getDocs(window.collection(window.db, "faqs"));
-                const faqs = [];
-                querySnapshot.forEach((doc) => {
-                    const d = doc.data();
-                    if (d.language === 'en') faqs.push(d);
-                });
-                const data = { faqs: faqs };
-        
+                const response = await fetch('https://frigidaire-api.franco-p.workers.dev/api/faqs?lang=en');
+                const data = await response.json();
                 const container = document.getElementById('faq-container');
                 
                 const col1 = data.faqs.slice(0, 6);
@@ -1122,7 +1177,7 @@ const { title, lang } = Astro.props;
             }
         }
 
-        // Contact Form � Invisible Turnstile
+        // Contact Form — Invisible Turnstile
         let contactFormPending = false;
 
         function onTurnstileSuccess(token) {
@@ -1166,11 +1221,11 @@ const { title, lang } = Astro.props;
                 turnstile_token: token || ''
             };
             try {
-                
-                data.timestamp = new Date().toISOString();
-                await window.addDoc(window.collection(window.db, "contact_messages"), data);
-                const response = { ok: true };
-        
+                const response = await fetch('https://frigidaire-api.franco-p.workers.dev/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
                 if (response.ok) {
                     showToast('Thank you! Your message has been sent.', 'success');
                     form.reset();
@@ -1207,7 +1262,7 @@ const { title, lang } = Astro.props;
                 border-left: 4px solid ${type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#3498db'};
             `;
             
-            const icon = type === 'success' ? '?' : type === 'error' ? '?' : '?';
+            const icon = type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ';
             const color = type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#3498db';
             
             toast.innerHTML = `
@@ -1237,7 +1292,7 @@ const { title, lang } = Astro.props;
         `;
         document.head.appendChild(style);
 
-        // Skeleton HTML � injected immediately to reserve grid space (eliminates CLS)
+        // Skeleton HTML — injected immediately to reserve grid space (eliminates CLS)
         const skeletonCard = `<div class="retailer-skeleton">
             <div class="retailer-skeleton-img"></div>
             <div class="retailer-skeleton-line"></div>
@@ -1247,7 +1302,11 @@ const { title, lang } = Astro.props;
 
         // Load dynamic content on page load
         document.addEventListener('DOMContentLoaded', () => {
-            
+            // Pre-fill grid with 3 skeleton cards before fetch resolves
+            const rc = document.getElementById('retailers-container');
+            if (rc) rc.innerHTML = skeletonCard.repeat(3);
+            loadRetailers();
+            loadFAQs();
         });
 
         // Smooth scrolling for anchor links
@@ -1261,22 +1320,6 @@ const { title, lang } = Astro.props;
             });
         });
     </script>
-<script src="/wp-content/uploads/shared-footer.js" is:inline></script>
-
-<!-- Premium Animations Injection JS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const containers = document.querySelectorAll('.welcome, .product-features, .feature-content, .feature-image, .feature-video, .image-carousel, .retailers, .faq, .contact');
-        containers.forEach(container => {
-            if(!container.hasAttribute('data-aos')) {
-                container.setAttribute('data-aos', 'fade-up');
-            }
-        });
-        AOS.init({ once: true, offset: 50, duration: 1500, easing: 'ease-out-cubic' });
-    });
-</script>
-
-
+<script src="/wp-content/uploads/shared-footer.js"></script>
 </body>
 </html>
