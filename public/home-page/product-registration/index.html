@@ -1920,20 +1920,25 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
       clearTimeout(timer);
 
       timer = setTimeout(function () {
-        fetch(
-          window.ajaxurl +
-          '?action=model_search&q=' +
-          encodeURIComponent(q)
-        )
-          .then(res => res.json())
-          .then(items => {
+        var mockProducts = [
+          {
+            id: 3044,
+            sku: "TEG-003-C",
+            name: "Freestanding Folding Electric Dual-Element Grill",
+            image: "/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-FrontFace.webp"
+          }
+        ];
+        var searchLower = q.toLowerCase();
+        var items = mockProducts.filter(function(p) {
+          return p.sku.toLowerCase().indexOf(searchLower) !== -1 || p.name.toLowerCase().indexOf(searchLower) !== -1;
+        });
 
-            resultsBox.innerHTML = '';
+        resultsBox.innerHTML = '';
 
-            if (!items || !items.length) {
-              resultsBox.style.display = 'none';
-              return;
-            }
+        if (!items || !items.length) {
+          resultsBox.style.display = 'none';
+          return;
+        }
 
             items.forEach(p => {
               const div = document.createElement('div');
@@ -1956,7 +1961,6 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
             });
 
             resultsBox.style.display = 'block';
-          });
       }, 300);
     });
 
