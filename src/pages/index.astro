@@ -365,6 +365,15 @@ try {
                     <textarea name="message" placeholder="Your message" rows="5" required class="w-full border border-gray-300 rounded px-4 py-3 text-[#333] text-sm outline-none focus:border-[#DB4155] transition-colors resize-none"></textarea>
                     <div id="cf-turnstile-contact" class="cf-turnstile" data-sitekey="0x4AAAAAADJQp0TJa6LotiLr"
                          data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError" data-expired-callback="onTurnstileExpired"></div>
+                    <script is:inline>
+                        (function() {
+                            var host = window.location.hostname;
+                            var el = document.getElementById('cf-turnstile-contact');
+                            if (el && host !== 'frigidaireoutdoorliving.com' && host !== 'www.frigidaireoutdoorliving.com') {
+                                el.setAttribute('data-sitekey', '1x00000000000000000000AA');
+                            }
+                        })();
+                    </script>
                     <button type="submit" id="contact-submit-btn"
                             class="w-32 bg-[#DB4155] text-white font-bold py-3 px-6 rounded-full uppercase text-sm tracking-wide hover:bg-[#c23648] transition-colors">Send</button>
                 </form>
