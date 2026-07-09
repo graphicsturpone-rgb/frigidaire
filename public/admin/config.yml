@@ -2,7 +2,9 @@ backend:
   name: github
   repo: graphicsturpone-rgb/frigidaire
   branch: main
-  base_url: https://decap-cms-oauth.workers.dev
+  # To use Decap CMS in production (outside localhost), you need to deploy a free OAuth Gatekeeper
+  # (e.g. on Cloudflare Workers or Vercel) and paste its URL below as base_url.
+  # base_url: https://your-oauth-gatekeeper.workers.dev
 
 # Enable local development server
 local_backend: true
