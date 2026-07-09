@@ -213,50 +213,96 @@ const faqs = await getCollection('faqs', ({ data }) => {
         });
     </script>
 
-<!-- Where to Buy (Tailwind CSS) -->
+<!-- Where to Buy (JS-loaded from API) -->
     <section class="bg-white py-20" id="where-to-buy">
-        <div class="max-w-7xl mx-auto px-5 md:px-10 text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-[#333] mb-2 uppercase font-['Gotham',sans-serif]">
+        <div class="max-w-7xl mx-auto px-5 md:px-10 text-left">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-[#333] mb-2 uppercase font-['Gotham',sans-serif]">
                 <span class="text-[#DB4155]">DISPONIBLE</span> CHEZ
             </h2>
-            <h3 class="text-3xl font-bold text-[#333] mb-12 uppercase font-['Gotham',sans-serif]">
+            <h3 class="text-2xl md:text-3xl font-bold text-[#333] mb-12 uppercase font-['Gotham',sans-serif]">
                 NOS DÉTAILLANTS DE CONFIANCE
             </h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                {retailers.map((retailer) => {
-                    const url = retailer.data?.url || '#';
-                    const name = retailer.data?.name || 'Retailer';
-                    const availability = retailer.data?.availability_fr || retailer.data?.availability || 'À venir';
-                    const hoverBg = retailer.data?.hover_bg_color || '#DB4155';
-                    const defaultImg = retailer.data?.default_image || retailer.data?.default_image_url || '';
-                    const hoverImg = retailer.data?.hover_image || retailer.data?.hover_image_url || '';
-                    
-                    const isWhiteBg = hoverBg.toLowerCase() === '#fff' || hoverBg.toLowerCase() === '#ffffff';
-                    
-                    return (
-                        <a href={url} target="_blank" rel="noopener" aria-label={`Acheter ${name} - ${availability}`} class="group relative flex flex-col rounded-xl overflow-hidden bg-[#f5f5f5] cursor-pointer transition-colors duration-300 hover:bg-[var(--hover-bg)]" style={`--hover-bg: ${hoverBg};`}>
-                            
-                            <div class="relative w-full h-[200px] overflow-hidden group-hover:bg-[var(--hover-bg)] transition-colors duration-300">
-                                <img src={defaultImg} alt={name} class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" loading="lazy" width="600" height="160" />
-                                <img src={hoverImg} alt={name} class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" loading="lazy" width="600" height="160" />
-                            </div>
-                            
-                            <div class="relative flex-grow p-6 pb-24 group-hover:opacity-0 transition-opacity duration-300">
-                                <h3 class="text-3xl font-extrabold text-[#333] mb-2 font-['Gotham',sans-serif]">{name}</h3>
-                                <p class="text-[#DB4155] text-sm">{availability}</p>
-                            </div>
-                            
-                            <div class="absolute bottom-6 left-6 right-6">
-                                <div class={`w-full py-3 rounded-full text-center font-bold border-2 transition-all duration-300 ${isWhiteBg ? 'bg-[#DB4155] border-[#DB4155] text-white group-hover:bg-transparent group-hover:text-[#DB4155]' : 'bg-[#DB4155] border-[#DB4155] text-white group-hover:bg-transparent group-hover:border-white group-hover:text-white'}`}>ACHETER</div>
-                            </div>
-                            
-                        </a>
-                    );
-                })}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="retailers-grid">
+                <!-- Cards injected by JS -->
             </div>
         </div>
     </section>
+
+    <script>
+        async function loadRetailers() {
+            try {
+                const res = await fetch('https://frigidaire-api.franco-p.workers.dev/api/retailers');
+                const data = await res.json();
+                const grid = document.getElementById('retailers-grid');
+                if (!grid) return;
+
+                grid.innerHTML = data.retailers.map(r => {
+                    const availability = r.availability_fr || r.availability;
+                    const isWhite = (r.hover_bg_color || '').toLowerCase() === '#fff' || (r.hover_bg_color || '').toLowerCase() === '#ffffff';
+
+                    return `
+                        <a href="${r.url}" target="_blank" rel="noopener" aria-label="Acheter ${r.name} - ${availability}"
+                           class="group flex flex-col rounded-xl overflow-hidden bg-[#f5f5f5] cursor-pointer transition-colors duration-300"
+                           style="--hover-bg: ${r.hover_bg_color || '#DB4155'};">
+
+                            <div class="relative w-full bg-white overflow-hidden" style="aspect-ratio:2/1;">
+                                <img src="${r.default_image_url}" alt="${r.name}"
+                                     class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-img-default"
+                                     loading="lazy" />
+                                <img src="${r.hover_image_url}" alt="${r.name}"
+                                     class="absolute inset-0 w-full h-full object-contain p-8 opacity-0 transition-opacity duration-300 group-img-hover"
+                                     loading="lazy" />
+                            </div>
+
+                            <div class="flex flex-col flex-grow p-8 transition-opacity duration-300 group-text">
+                                <h3 class="text-3xl font-extrabold text-[#333] mb-1" style="font-family:'Gotham',sans-serif;">${r.name}</h3>
+                                <p class="text-[#DB4155] text-sm font-medium mb-8 flex-grow">${availability}</p>
+                                <div class="w-full py-3 rounded-full text-center font-bold text-sm tracking-wide border-2 bg-[#DB4155] border-[#DB4155] text-white transition-all duration-300 retailer-btn">ACHETER</div>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+
+                grid.querySelectorAll('a').forEach(card => {
+                    const hoverBg = card.style.getPropertyValue('--hover-bg');
+                    const imgDefault = card.querySelector('.group-img-default');
+                    const imgHover = card.querySelector('.group-img-hover');
+                    const text = card.querySelector('.group-text');
+                    const btn = card.querySelector('.retailer-btn');
+                    const imgWrap = card.querySelector('[style*="aspect-ratio"]');
+
+                    card.addEventListener('mouseenter', () => {
+                        card.style.backgroundColor = hoverBg;
+                        if (imgWrap) imgWrap.style.backgroundColor = hoverBg;
+                        if (imgDefault) imgDefault.style.opacity = '0';
+                        if (imgHover) imgHover.style.opacity = '1';
+                        if (text) text.style.opacity = '0';
+                        if (btn) {
+                            btn.style.background = 'transparent';
+                            btn.style.color = hoverBg.toLowerCase() === '#fff' || hoverBg.toLowerCase() === '#ffffff' ? '#DB4155' : 'white';
+                            btn.style.borderColor = hoverBg.toLowerCase() === '#fff' || hoverBg.toLowerCase() === '#ffffff' ? '#DB4155' : 'white';
+                        }
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.backgroundColor = '';
+                        if (imgWrap) imgWrap.style.backgroundColor = 'white';
+                        if (imgDefault) imgDefault.style.opacity = '1';
+                        if (imgHover) imgHover.style.opacity = '0';
+                        if (text) text.style.opacity = '1';
+                        if (btn) {
+                            btn.style.background = '#DB4155';
+                            btn.style.color = 'white';
+                            btn.style.borderColor = '#DB4155';
+                        }
+                    });
+                });
+
+            } catch (e) {
+                console.error('Failed to load retailers:', e);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', loadRetailers);
+    </script>
 
     <!-- FAQ Section -->
     <section class="faq-section" id="faq">
