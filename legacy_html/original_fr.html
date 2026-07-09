@@ -1,0 +1,1386 @@
+﻿<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frigidaire Outdoor Living – Grill électrique à double élément. 700°F, certifié IPX4 et UL. Livraison gratuite, garantie 2 ans.">
+    <title>Frigidaire Outdoor Living - Grill Électrique à Double Élément</title>
+    <link rel="icon" href="/wp-content/uploads/2025/12/cropped-FRIGIDAIRE-FAV-1-scaled-1-32x32.jpg" sizes="32x32">
+    <link rel="preload" as="image" href="/wp-content/uploads/2025/12/FOL-first-banner-scaled-1.webp" type="image/webp">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
+        body {
+            font-family: 'Gotham', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #DB4155;
+        }
+
+        .lang-switcher {
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            background: url('/wp-content/uploads/2025/12/FOL-first-banner-scaled-1.webp') center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(100deg, rgba(219, 65, 85, 0.85) 0%, rgba(219, 65, 85, 0.85) 42%, transparent 42%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            padding: 60px;
+            color: white;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #DB4155;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Welcome Section */
+        .welcome {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .welcome-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .welcome h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .welcome h2 span {
+            color: #DB4155;
+        }
+
+        .welcome-text h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .welcome-text p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Product Features */
+        .product-features {
+            padding: 80px 0 0 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            background: #DB4155;
+            color: white;
+            padding: 15px 30px;
+            display: block;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-grid {
+            width: 100%;
+        }
+
+        .feature-content h3 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-content h3 span {
+            color: #DB4155;
+        }
+
+        .feature-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .feature-image {
+            text-align: center;
+        }
+
+        .feature-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .feature-video {
+            width: 100%;
+            text-align: center;
+        }
+
+        .feature-video video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Image Carousel */
+        .image-carousel {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: #DB4155 !important;
+            width: 44px;
+            height: 44px;
+        }
+
+        .swiper-button-prev:after,
+        .swiper-button-next:after {
+            font-size: 24px;
+            font-weight: bold;
+            color: #DB4155 !important;
+        }
+        
+        .swiper-button-prev svg,
+        .swiper-button-next svg {
+            fill: #DB4155 !important;
+        }
+
+        /* Getting Started Tabs */
+        .getting-started {
+            padding: 0;
+            background: white;
+        }
+
+        .getting-started-header {
+            background: #DB4155;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 30px 0;
+            background: white;
+        }
+
+        .tab {
+            padding: 10px 0;
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .tab.active {
+            color: #DB4155;
+            border-bottom-color: #DB4155;
+        }
+
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 60px 0;
+        }
+
+        .tab-content.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        #tab-2.active {
+            grid-template-columns: 1fr 2fr;
+            align-items: start;
+        }
+
+        .tab-text-box {
+            background: #f5f5f5;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .tab-text h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .tab-text h3 span {
+            color: #DB4155;
+        }
+
+        .tab-text ul {
+            list-style: none;
+        }
+
+        .tab-text li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .tab-text li:before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #DB4155;
+            font-weight: bold;
+        }
+
+        /* Where to Buy */
+        .where-to-buy {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .retailers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            min-height: 320px;
+        }
+        .retailer-skeleton {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f0f0f0;
+            animation: skeleton-pulse 1.4s ease-in-out infinite;
+        }
+        .retailer-skeleton-img  { height: 160px; background: #e0e0e0; }
+        .retailer-skeleton-line { height: 18px; margin: 16px 20px 8px; background: #e0e0e0; border-radius: 4px; }
+        .retailer-skeleton-line.short { width: 55%; height: 13px; margin-top: 0; }
+        .retailer-skeleton-btn  { height: 40px; margin: 12px 20px 20px; background: #e0e0e0; border-radius: 99px; }
+        @keyframes skeleton-pulse {
+            0%, 100% { opacity: 1; } 50% { opacity: 0.5; }
+        }
+
+        .retailer-card {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #f5f5f5;
+            cursor: pointer;
+            transition: background 0.35s ease;
+        }
+
+        .retailer-card:hover {
+            background: var(--card-hover-bg);
+        }
+
+        .retailer-card-star {
+            position: absolute;
+            top: 14px;
+            right: 21px;
+            font-size: 30px;
+            color: var(--star-color);
+            z-index: 5;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .retailer-image-wrap {
+            position: relative;
+            height: 160px;
+            background: transparent;
+            transition: background 0.35s ease;
+        }
+
+        .retailer-card:hover .retailer-image-wrap {
+            background: var(--card-hover-bg);
+        }
+
+        .retailer-image-wrap img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.35s ease;
+        }
+
+        .retailer-img-hover {
+            opacity: 0;
+        }
+
+        .retailer-info {
+            padding: 20px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .retailer-name {
+            margin: 0;
+            padding-left: 10px;
+            font-size: 38px;
+            font-weight: 600;
+            color: var(--title-color);
+            letter-spacing: -0.040em;
+            transition: opacity 0.25s ease;
+        }
+
+        .retailer-availability {
+            margin: 6px 0 28px;
+            padding-left: 11px;
+            font-size: 16px;
+            color: var(--availability-color);
+            margin-top: 1px;
+            margin-bottom: 35px;
+            transition: opacity 0.25s ease;
+        }
+
+        .retailer-btn {
+            padding: 12px 0;
+            width: 100%;
+            max-width: 2600px;
+            text-align: center;
+            background: var(--button-bg);
+            color: var(--button-text);
+            border-radius: 999px;
+            font-weight: 600;
+            margin: 0 auto;
+            transition: all 0.3s;
+            display: block;
+            text-decoration: none;
+        }
+
+        .retailer-card:hover .retailer-img-default {
+            opacity: 0;
+        }
+
+        .retailer-card:hover .retailer-img-hover {
+            opacity: 1;
+        }
+
+        .retailer-card:hover .retailer-name,
+        .retailer-card:hover .retailer-availability {
+            opacity: 0;
+        }
+
+        .retailer-card:hover .retailer-btn {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+        }
+
+        /* Fix button visibility when hover bg is white */
+        .retailer-card[style*="--card-hover-bg:#fff"]:hover .retailer-btn,
+        .retailer-card[style*="--card-hover-bg: #fff"]:hover .retailer-btn {
+            border: 2px solid #db4155;
+            color: #db4155;
+        }
+
+        .retailer-card:hover .retailer-card-star {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16px;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background: #f9f9f9;
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            color: #DB4155;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 24px 20px 24px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            padding: 80px 0;
+            background: #f0f0f0;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-content h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .contact-content h2 span {
+            color: #DB4155;
+        }
+
+        .contact-content h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 15px 40px;
+            background: #DB4155;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            justify-self: start;
+        }
+
+        .submit-btn:hover {
+            background: #c23648;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 40px;
+        }
+
+        .footer-column h6 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #353535;
+        }
+
+        .footer-logo {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+
+        .footer-tagline {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(219, 65, 85, 0.1);
+            color: #DB4155;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #DB4155;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #DB4155;
+        }
+
+        .footer-contact {
+            list-style: none;
+        }
+
+        .footer-contact li {
+            margin-bottom: 10px;
+        }
+
+        .footer-contact a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: #DB4155;
+        }
+
+        .footer-bottom {
+            background: #DB4155;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                min-height: 400px;
+            }
+
+            .hero::before {
+                background: rgba(219, 65, 85, 0.85);
+            }
+
+            .hero-text {
+                max-width: 100%;
+                padding: 40px 20px;
+            }
+
+            .hero-text h1 {
+                font-size: 30px;
+            }
+
+            .hero-text p {
+                font-size: 15px;
+            }
+
+            .welcome-content,
+            .feature-grid,
+            .tab-content.active,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            /* Safety tab: override the 1fr 2fr desktop rule */
+            #tab-2.active {
+                grid-template-columns: 1fr;
+            }
+
+            /* Badge grid inside Safety tab */
+            .cert-badges {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
+                margin-bottom: 20px !important;
+            }
+
+            .cert-badges > div {
+                padding: 20px !important;
+            }
+
+            .cert-badges h2 {
+                font-size: 48px !important;
+            }
+
+            .cert-badges img {
+                max-width: 130px !important;
+            }
+
+            /* Tab buttons: wrap on mobile */
+            .tabs {
+                flex-wrap: wrap;
+                gap: 4px;
+                padding: 0 16px;
+            }
+
+            .tab {
+                font-size: 11px;
+                padding: 10px 14px;
+                flex: 1 1 auto;
+            }
+
+            /* Tab content padding */
+            .tab-content {
+                padding: 32px 0;
+            }
+
+            .tab-text-box {
+                padding: 24px;
+            }
+
+            .welcome {
+                padding: 50px 0;
+            }
+
+            .welcome h2 {
+                font-size: 28px;
+            }
+
+            .retailers-grid,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            /* Contact form */
+            .contact-section {
+                padding: 50px 0;
+            }
+
+            .contact-content h2 {
+                font-size: 26px;
+            }
+
+            .contact-content h3 {
+                font-size: 20px;
+            }
+
+            .submit-btn,
+            .btn[type="submit"],
+            #contact-submit-btn {
+                width: 100%;
+                text-align: center;
+                justify-self: stretch;
+            }
+
+            /* Section padding */
+            .product-features,
+            .product-section {
+                padding: 40px 0 0;
+            }
+
+            /* Footer */
+            footer {
+                padding: 40px 0 0;
+            }
+
+            .footer-content {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .contact-content h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+    <script src="/wp-content/uploads/shared-header-fr.js" defer></script>
+</head>
+<body>
+    <!-- Header loaded by shared-header-fr.js -->
+
+    <main id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Découvrez la cuisson extérieure, réinventée.</h1>
+                <p>Découvrez le gril électrique à double élément Frigidaire – puissance, précision et style pour un mode de vie extérieur moderne.</p>
+                <a aria-label="En savoir plus sur le gril électrique à double élément Frigidaire" href="/fr/accueil/apercu-du-produit/" class="btn">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <div class="container">
+            <div class="welcome-content">
+                <div>
+                    <h2>BIENVENUE DANS<br>L'UNIVERS FRIGIDAIRE<br><span>VIE EN EXTÉRIEUR</span></h2>
+                </div>
+                <div class="welcome-text">
+                    <h3>Là où l'innovation rencontre le plein air.</h3>
+                    <p>Avec plus de 100 ans de performance reconnue, Frigidaire sort à l'extérieur — en créant des solutions extérieures durables et hautement performantes, conçues pour une vie sans effort.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Features -->
+    <section class="product-features" id="product">
+        <div class="section-header">
+            <div class="section-title">DÉCOUVREZ NOS INNOVATIONS AXÉES SUR LA FAMILLE</div>
+        </div>
+        <div class="feature-video">
+            <video autoplay loop muted playsinline>
+                <source src="https://media.frigidaireoutdoorliving.com/FR-LAST-FEATURES-VID.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <!-- Image Carousel -->
+    <section class="image-carousel">
+        <div class="carousel-container">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/OPEN-GRILL-COOKING-FOOD-1.webp" alt="Open Grill Cooking Food" loading="lazy" width="1200" height="800">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-FrontFace.webp" alt="Grill Front Face" loading="lazy" width="1200" height="800">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/GRILL-OPNER-CLOSEUP-1.webp" alt="Grill Opener Closeup" loading="lazy" width="1200" height="800">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-45d-TopLeft.webp" alt="Grill 45 Degree View" loading="lazy" width="1200" height="800">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/OPEN-HEATED-GRILL-1.webp" alt="Open Heated Grill" loading="lazy" width="1200" height="800">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-BackFace.webp" alt="Grill Back Face" loading="lazy" width="1200" height="800">
+                    </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started Tabs -->
+    <section class="getting-started">
+        <div class="getting-started-header">BIEN DÉMARRER AVEC VOTRE GRIL</div>
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab(0)">À PROPOS DU GRILL BBQ</button>
+            <button class="tab" onclick="switchTab(1)">CONTENU DE LA BOÎTE</button>
+            <button class="tab" onclick="switchTab(2)">SÉCURITÉ ET CERTIFICATION</button>
+        </div>
+        <div class="container">
+            <div class="tab-content active" id="tab-0">
+                <div class="feature-image">
+                    <img src="/wp-content/uploads/2026/01/DUAL-ELEC-GRILL-DIMENTIONS-1-scaled.webp" alt="Grill Specifications with Dimensions" loading="lazy" width="1200" height="849">
+                </div>
+                <div class="tab-text-box">
+                    <h3>DEUX ÉLÉMENTS CHAUFFANTS HAUTE PERFORMANCE <span style="color: #DB4155;">ATTEIGNENT JUSQU'À 700 °F</span></h3>
+                    <ul>
+                        <li>Grande surface de cuisson en fonte de 19" x 17" avec grille de maintien au chaud intégrée.</li>
+                        <li>Préchauffe en seulement 20 minutes et comprend deux sondes de cuisson pour un contrôle précis de la température.</li>
+                        <li>Tablettes latérales pivotantes offrant un espace pratique pour la préparation et le service.</li>
+                        <li>Conception résistante à l'eau IPX4 avec certification UL pour une utilisation extérieure sécuritaire.</li>
+                        <li>Alimentation électrique de 1750 W / 120 V, couverte par une garantie du fabricant de 2 ans.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="tab-1">
+                <div class="tab-text-box">
+                    <h3>TOUT CE DONT VOUS AVEZ BESOIN POUR COMMENCER <span style="color: #DB4155;">DÈS LA SORTIE DE LA BOÎTE</span></h3>
+                    <ul>
+                        <li>Gril électrique assemblé avec bac de récupération des graisses intégré.</li>
+                        <li>Support de base avec panneau comprenant un ouvre-bouteille et un support pour le cordon d'alimentation.</li>
+                        <li>Tablettes latérales et roues pour plus d'espace de travail et une meilleure mobilité.</li>
+                        <li>Sondes de température pour la viande assurant un contrôle précis de la cuisson.</li>
+                    </ul>
+                </div>
+                <div style="position: relative; background: #DB4155; clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%); padding: 40px;">
+                    <img src="/wp-content/uploads/2026/01/BOX-1-1024x645.webp" alt="Box Contents" loading="lazy" width="1024" height="645" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+            <div class="tab-content" id="tab-2">
+                <div class="tab-text-box">
+                    <h3><span style="color: #DB4155;">ATTENTION :</span> RISQUE DE CHOC ÉLECTRIQUE</h3>
+                    <ul>
+                        <li>Gardez la connexion de la rallonge sèche et hors du sol.</li>
+                        <li>Pour assurer une protection continue contre le risque de choc électrique, branchez uniquement sur des prises correctement mises à la terre.</li>
+                        <li>Usage domestique uniquement.</li>
+                        <li>Ne pas immerger dans l'eau.</li>
+                    </ul>
+                    <a href="/wp-content/uploads/2025/12/MANUAL-TEG-003-C-FRIGIDAIRE-FREE-STANDING-FOLDING-ELECTRIC-DUAL-ELEMENT-GRILL.pdf" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; background: #ccc; color: #333;">LIRE LE MANUEL AVANT UTILISATION →</a>
+                </div>
+                <div>
+                    <div class="cert-badges" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                        <div style="background: #f5f5f5; padding: 40px; text-align: center; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                            <img src="/wp-content/uploads/2025/12/FRI-LISTED-300x180.webp" alt="UL Listed" loading="lazy" width="300" height="180" style="max-width: 200px;">
+                        </div>
+                        <div style="background: #f5f5f5; padding: 40px; text-align: center; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                            <h2 style="color: #DB4155; font-size: 72px; font-weight: 700; margin: 0;">IPX4</h2>
+                        </div>
+                    </div>
+                    <div style="text-align: left; color: #666;">
+                        <p style="margin-bottom: 20px;">Ce grill Frigidaire Outdoor Living est certifié UL pour les États-Unis et le Canada, garantissant qu'il répond à des normes de sécurité strictes. Il est également classé IPX4 pour les intempéries, offrant une protection fiable contre les éclaboussures d'eau pour une utilisation extérieure sûre.</p>
+                        <a href="/wp-content/uploads/2025/12/MANUAL-TEG-003-C-FRIGIDAIRE-FREE-STANDING-FOLDING-ELECTRIC-DUAL-ELEMENT-GRILL.pdf" download class="btn" style="background: #DB4155; color: white;">TÉLÉCHARGER LE MANUEL D'UTILISATION</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Where to Buy -->
+    <section class="where-to-buy" id="where-to-buy">
+        <div class="container">
+            <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 5px; line-height: 1.2;"><span style="color: #DB4155;">DISPONIBLE</span> CHEZ DES</h2>
+            <h3 style="font-size: 32px; font-weight: 700; margin-bottom: 30px; color: #333; line-height: 1.2;">DÉTAILLANTS DE CONFIANCE</h3>
+            <div class="retailers-grid" id="retailers-container">
+                <!-- skeletons injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 10px;">FOIRE AUX</h2>
+            <h3 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">QUESTIONS <span style="color: #DB4155;">FRÉQUENTES</span></h3>
+            <div class="faq-grid" id="faq-container">
+                <!-- FAQs loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>VOUS AVEZ <span style="color: #DB4155;">D'AUTRES</span> QUESTION?</h2>
+                <h3>Remplissez le formulaire.</h3>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="firstName" placeholder="Prénom" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="lastName" placeholder="Nom de famille" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
+                    </div>
+                    <div id="cf-turnstile-contact" class="cf-turnstile" data-sitekey="0x4AAAAAADJQp0TJa6LotiLr" data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError" data-expired-callback="onTurnstileExpired"></div>
+                    <button type="submit" class="btn" id="contact-submit-btn">ENVOYER LE MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    </main><!-- /#main-content -->
+
+    <!-- Footer -->
+    
+<!-- Footer loaded by shared-footer-fr.js -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+    <script>
+        // Initialize Swiper (deferred — wait for Swiper library to load)
+        window.addEventListener('load', function() {
+        const swiper = new Swiper('.mySwiper', {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 10
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 10
+                }
+            }
+        });
+        }); // end window.load
+
+        // Tab Switching
+        function switchTab(index) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            tabs[index].classList.add('active');
+            document.getElementById(`tab-${index}`).classList.add('active');
+        }
+
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            element.classList.toggle('open');
+        }
+
+        // Load Retailers
+        async function loadRetailers() {
+            try {
+                const response = await fetch('https://frigidaire-api.franco-p.workers.dev/api/retailers');
+                const data = await response.json();
+                const container = document.getElementById('retailers-container');
+                
+                container.innerHTML = data.retailers.map(retailer => {
+                    return `
+                    <a href="${retailer.url}" target="_blank" rel="noopener" class="retailer-card" aria-label="Acheter chez ${retailer.name} — ${retailer.availability_fr || retailer.availability}" style="
+                        --card-hover-bg: ${retailer.hover_bg_color || '#DB4155'};
+                        --title-color: #333;
+                        --availability-color: #DB4155;
+                        --button-bg: #DB4155;
+                        --button-text: #fff;
+                        --star-color: #FFD700;
+                    ">
+                        <div class="retailer-image-wrap">
+                            <img src="${retailer.default_image_url}" alt="${retailer.name}" class="retailer-img-default" loading="lazy" width="600" height="160">
+                            <img src="${retailer.hover_image_url}" alt="${retailer.name}" class="retailer-img-hover" loading="lazy" width="600" height="160">
+                        </div>
+                        <div class="retailer-info">
+                            <h3 class="retailer-name">${retailer.name}</h3>
+                            <p class="retailer-availability">${retailer.availability_fr || retailer.availability}</p>
+                            <div class="retailer-btn">ACHETER MAINTENANT</div>
+                        </div>
+                    </a>
+                `}).join('');
+            } catch (error) {
+                console.error('Error loading retailers:', error);
+            }
+        }
+
+        // Load FAQs
+        async function loadFAQs() {
+            try {
+                const response = await fetch('https://frigidaire-api.franco-p.workers.dev/api/faqs?lang=fr');
+                const data = await response.json();
+                const container = document.getElementById('faq-container');
+                
+                const col1 = data.faqs.slice(0, 6);
+                const col2 = data.faqs.slice(6, 12);
+                
+                container.innerHTML = `
+                    <div>
+                        ${col1.map(faq => `
+                            <div class="faq-item" onclick="toggleFAQ(this)">
+                                <div class="faq-question">
+                                    <span>${faq.question}</span>
+                                    <span class="faq-icon">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">${faq.answer}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div>
+                        ${col2.map(faq => `
+                            <div class="faq-item" onclick="toggleFAQ(this)">
+                                <div class="faq-question">
+                                    <span>${faq.question}</span>
+                                    <span class="faq-icon">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">${faq.answer}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error loading FAQs:', error);
+            }
+        }
+
+        // Contact Form — Invisible Turnstile
+        let contactFormPending = false;
+
+        function onTurnstileSuccess(token) {
+            if (!contactFormPending) return;
+            contactFormPending = false;
+            submitContactForm(token);
+        }
+
+        function onTurnstileError() {
+            contactFormPending = false;
+            document.getElementById('contact-submit-btn').disabled = false;
+            showToast('Vérification de sécurité échouée. Veuillez réessayer.', 'error');
+        }
+
+        function onTurnstileExpired() {
+            contactFormPending = false;
+            if (window.turnstile) window.turnstile.reset('#cf-turnstile-contact');
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('contact-submit-btn');
+            const token = document.querySelector('[name="cf-turnstile-response"]')?.value;
+            if (!token) {
+                showToast('Veuillez patienter pendant la vérification de sécurité.', 'error');
+                return;
+            }
+            btn.disabled = true;
+            submitContactForm(token);
+        });
+
+        async function submitContactForm(token) {
+            const btn = document.getElementById('contact-submit-btn');
+            const form = document.getElementById('contact-form');
+            const rawData = Object.fromEntries(new FormData(form));
+            const data = {
+                first_name: rawData.firstName,
+                last_name: rawData.lastName,
+                email: rawData.email,
+                message: rawData.message,
+                turnstile_token: token || ''
+            };
+            try {
+                const response = await fetch('https://frigidaire-api.franco-p.workers.dev/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (response.ok) {
+                    showToast('Merci! Votre message a été envoyé.', 'success');
+                    form.reset();
+                    if (window.turnstile) window.turnstile.reset();
+                } else {
+                    const err = await response.json();
+                    showToast(err.error || 'Erreur lors de l\'envoi du message. Veuillez réessayer.', 'error');
+                    if (window.turnstile) window.turnstile.reset();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Erreur lors de l\'envoi du message. Veuillez réessayer.', 'error');
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        // Toast notification function
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: white;
+                padding: 16px 24px;
+                border-radius: 8px;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                border-left: 4px solid ${type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#3498db'};
+            `;
+            
+            const icon = type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ';
+            const color = type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#3498db';
+            
+            toast.innerHTML = `
+                <span style="color: ${color}; font-size: 20px; font-weight: bold;">${icon}</span>
+                <span style="color: #2c3e50; font-weight: 500;">${message}</span>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // Add toast animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(400px); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(400px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        const skeletonCard = `<div class="retailer-skeleton">
+            <div class="retailer-skeleton-img"></div>
+            <div class="retailer-skeleton-line"></div>
+            <div class="retailer-skeleton-line short"></div>
+            <div class="retailer-skeleton-btn"></div>
+        </div>`;
+
+        // Load dynamic content on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const rc = document.getElementById('retailers-container');
+            if (rc) rc.innerHTML = skeletonCard.repeat(3);
+            loadRetailers();
+            loadFAQs();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+<script src="/wp-content/uploads/shared-footer-fr.js"></script>
+</body>
+</html>
+
