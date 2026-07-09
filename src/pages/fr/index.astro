@@ -1,14 +1,22 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import homeContent from '../../content/pages/home.json';
-import { getCollection } from 'astro:content';
 
-const retailers = await getCollection('retailers');
-retailers.sort((a, b) => a.data.display_order - b.data.display_order);
-
-const faqs = await getCollection('faqs', ({ data }) => {
-  return data.language === 'fr';
-});
+// Fetch retailer and FAQ data from API at BUILD TIME (server-side, no CORS)
+let apiRetailers = [];
+let apiFaqs = [];
+try {
+    const [retRes, faqRes] = await Promise.all([
+        fetch('https://frigidaire-api.franco-p.workers.dev/api/retailers'),
+        fetch('https://frigidaire-api.franco-p.workers.dev/api/faqs?lang=fr'),
+    ]);
+    const retData = await retRes.json();
+    const faqData = await faqRes.json();
+    apiRetailers = retData.retailers || [];
+    apiFaqs = faqData.faqs || [];
+} catch (e) {
+    console.warn('Failed to fetch from API at build time:', e);
+}
 ---
 <Layout title="Frigidaire Outdoor Living - Gril électrique à double élément" lang="fr">
 
@@ -216,7 +224,7 @@ const faqs = await getCollection('faqs', ({ data }) => {
         });
     </script>
 
-<!-- Where to Buy (JS-loaded from API) -->
+<!-- Where to Buy (Server-side rendered from API) -->
     <section class="bg-white py-20" id="where-to-buy">
         <div class="max-w-7xl mx-auto px-5 md:px-10 text-left">
             <h2 class="text-3xl md:text-4xl font-extrabold text-[#333] mb-2 uppercase font-['Gotham',sans-serif]">
@@ -225,138 +233,126 @@ const faqs = await getCollection('faqs', ({ data }) => {
             <h3 class="text-2xl md:text-3xl font-bold text-[#333] mb-12 uppercase font-['Gotham',sans-serif]">
                 NOS DÉTAILLANTS DE CONFIANCE
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="retailers-grid">
-                <!-- Cards injected by JS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {apiRetailers.map((r) => {
+                    const availability = r.availability_fr || r.availability;
+                    const isWhite = (r.hover_bg_color || '').toLowerCase() === '#fff' || (r.hover_bg_color || '').toLowerCase() === '#ffffff';
+                    return (
+                        <a href={r.url} target="_blank" rel="noopener"
+                           aria-label={`Acheter ${r.name} - ${availability}`}
+                           class="retailer-card group flex flex-col rounded-xl overflow-hidden bg-[#f5f5f5] cursor-pointer"
+                           data-hover-bg={r.hover_bg_color || '#DB4155'}>
+
+                            <div class="retailer-img-wrap relative w-full bg-white overflow-hidden" style="aspect-ratio:2/1;">
+                                <img src={r.default_image_url} alt={r.name}
+                                     class="retailer-img-default absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                                     loading="lazy" />
+                                <img src={r.hover_image_url} alt={r.name}
+                                     class="retailer-img-hover absolute inset-0 w-full h-full object-contain p-8 opacity-0 transition-opacity duration-300"
+                                     loading="lazy" />
+                            </div>
+
+                            <div class="retailer-info flex flex-col flex-grow p-8 transition-opacity duration-300">
+                                <h3 class="text-3xl font-extrabold text-[#333] mb-1 font-['Gotham',sans-serif]">{r.name}</h3>
+                                <p class="text-[#DB4155] text-sm font-medium mb-8 flex-grow">{availability}</p>
+                                <div class="retailer-btn w-full py-3 rounded-full text-center font-bold text-sm tracking-wide border-2 bg-[#DB4155] border-[#DB4155] text-white transition-all duration-300">ACHETER</div>
+                            </div>
+                        </a>
+                    );
+                })}
             </div>
         </div>
     </section>
 
     <script>
-        async function loadRetailers() {
-            try {
-                const res = await fetch('https://frigidaire-api.franco-p.workers.dev/api/retailers');
-                const data = await res.json();
-                const grid = document.getElementById('retailers-grid');
-                if (!grid) return;
+        document.querySelectorAll('.retailer-card').forEach(card => {
+            const hoverBg = card.dataset.hoverBg;
+            const imgDefault = card.querySelector('.retailer-img-default');
+            const imgHover = card.querySelector('.retailer-img-hover');
+            const info = card.querySelector('.retailer-info');
+            const btn = card.querySelector('.retailer-btn');
+            const imgWrap = card.querySelector('.retailer-img-wrap');
+            const isWhite = hoverBg && (hoverBg.toLowerCase() === '#fff' || hoverBg.toLowerCase() === '#ffffff');
 
-                grid.innerHTML = data.retailers.map(r => {
-                    const availability = r.availability_fr || r.availability;
-                    const isWhite = (r.hover_bg_color || '').toLowerCase() === '#fff' || (r.hover_bg_color || '').toLowerCase() === '#ffffff';
-
-                    return `
-                        <a href="${r.url}" target="_blank" rel="noopener" aria-label="Acheter ${r.name} - ${availability}"
-                           class="group flex flex-col rounded-xl overflow-hidden bg-[#f5f5f5] cursor-pointer transition-colors duration-300"
-                           style="--hover-bg: ${r.hover_bg_color || '#DB4155'};">
-
-                            <div class="relative w-full bg-white overflow-hidden" style="aspect-ratio:2/1;">
-                                <img src="${r.default_image_url}" alt="${r.name}"
-                                     class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-img-default"
-                                     loading="lazy" />
-                                <img src="${r.hover_image_url}" alt="${r.name}"
-                                     class="absolute inset-0 w-full h-full object-contain p-8 opacity-0 transition-opacity duration-300 group-img-hover"
-                                     loading="lazy" />
-                            </div>
-
-                            <div class="flex flex-col flex-grow p-8 transition-opacity duration-300 group-text">
-                                <h3 class="text-3xl font-extrabold text-[#333] mb-1" style="font-family:'Gotham',sans-serif;">${r.name}</h3>
-                                <p class="text-[#DB4155] text-sm font-medium mb-8 flex-grow">${availability}</p>
-                                <div class="w-full py-3 rounded-full text-center font-bold text-sm tracking-wide border-2 bg-[#DB4155] border-[#DB4155] text-white transition-all duration-300 retailer-btn">ACHETER</div>
-                            </div>
-                        </a>
-                    `;
-                }).join('');
-
-                grid.querySelectorAll('a').forEach(card => {
-                    const hoverBg = card.style.getPropertyValue('--hover-bg');
-                    const imgDefault = card.querySelector('.group-img-default');
-                    const imgHover = card.querySelector('.group-img-hover');
-                    const text = card.querySelector('.group-text');
-                    const btn = card.querySelector('.retailer-btn');
-                    const imgWrap = card.querySelector('[style*="aspect-ratio"]');
-
-                    card.addEventListener('mouseenter', () => {
-                        card.style.backgroundColor = hoverBg;
-                        if (imgWrap) imgWrap.style.backgroundColor = hoverBg;
-                        if (imgDefault) imgDefault.style.opacity = '0';
-                        if (imgHover) imgHover.style.opacity = '1';
-                        if (text) text.style.opacity = '0';
-                        if (btn) {
-                            btn.style.background = 'transparent';
-                            btn.style.color = hoverBg.toLowerCase() === '#fff' || hoverBg.toLowerCase() === '#ffffff' ? '#DB4155' : 'white';
-                            btn.style.borderColor = hoverBg.toLowerCase() === '#fff' || hoverBg.toLowerCase() === '#ffffff' ? '#DB4155' : 'white';
-                        }
-                    });
-                    card.addEventListener('mouseleave', () => {
-                        card.style.backgroundColor = '';
-                        if (imgWrap) imgWrap.style.backgroundColor = 'white';
-                        if (imgDefault) imgDefault.style.opacity = '1';
-                        if (imgHover) imgHover.style.opacity = '0';
-                        if (text) text.style.opacity = '1';
-                        if (btn) {
-                            btn.style.background = '#DB4155';
-                            btn.style.color = 'white';
-                            btn.style.borderColor = '#DB4155';
-                        }
-                    });
-                });
-
-            } catch (e) {
-                console.error('Failed to load retailers:', e);
-            }
-        }
-        document.addEventListener('DOMContentLoaded', loadRetailers);
+            card.addEventListener('mouseenter', () => {
+                card.style.backgroundColor = hoverBg;
+                if (imgWrap) imgWrap.style.backgroundColor = hoverBg;
+                if (imgDefault) imgDefault.style.opacity = '0';
+                if (imgHover) imgHover.style.opacity = '1';
+                if (info) info.style.opacity = '0';
+                if (btn) {
+                    btn.style.background = 'transparent';
+                    btn.style.color = isWhite ? '#DB4155' : 'white';
+                    btn.style.borderColor = isWhite ? '#DB4155' : 'white';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.backgroundColor = '';
+                if (imgWrap) imgWrap.style.backgroundColor = 'white';
+                if (imgDefault) imgDefault.style.opacity = '1';
+                if (imgHover) imgHover.style.opacity = '0';
+                if (info) info.style.opacity = '1';
+                if (btn) {
+                    btn.style.background = '#DB4155';
+                    btn.style.color = 'white';
+                    btn.style.borderColor = '#DB4155';
+                }
+            });
+        });
     </script>
 
-    <!-- FAQ Section (Tailwind CSS) -->
+    <!-- FAQ Section (Server-side rendered from API) -->
     <section class="bg-[#f9f9f9] py-20" id="faq">
         <div class="max-w-7xl mx-auto px-5 md:px-10">
             <h2 class="text-3xl md:text-4xl font-extrabold text-[#333] mb-2 uppercase font-['Gotham',sans-serif]">FOIRE AUX</h2>
             <h3 class="text-2xl md:text-3xl font-bold text-[#333] mb-12 uppercase font-['Gotham',sans-serif]">QUESTIONS <span class="text-[#DB4155]">FRÉQUENTES</span></h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0" id="faq-grid">
-                <!-- FAQs injected by JS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+                <div>
+                    {apiFaqs.slice(0, 6).map((faq) => (
+                        <div class="faq-item bg-white border border-gray-200 rounded-lg p-[15px] mb-3 cursor-pointer">
+                            <div class="flex justify-between items-center gap-4">
+                                <span class="text-[#333] font-semibold text-base leading-snug">{faq.question}</span>
+                                <span class="faq-icon text-[#DB4155] text-2xl font-bold leading-none flex-shrink-0">+</span>
+                            </div>
+                            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                                <div class="pt-3 text-[#666] text-sm leading-relaxed">{faq.answer}</div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    {apiFaqs.slice(6, 12).map((faq) => (
+                        <div class="faq-item bg-white border border-gray-200 rounded-lg p-[15px] mb-3 cursor-pointer">
+                            <div class="flex justify-between items-center gap-4">
+                                <span class="text-[#333] font-semibold text-base leading-snug">{faq.question}</span>
+                                <span class="faq-icon text-[#DB4155] text-2xl font-bold leading-none flex-shrink-0">+</span>
+                            </div>
+                            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                                <div class="pt-3 text-[#666] text-sm leading-relaxed">{faq.answer}</div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     </section>
 
     <script>
-        async function loadFAQs() {
-            try {
-                const res = await fetch('https://frigidaire-api.franco-p.workers.dev/api/faqs?lang=fr');
-                const data = await res.json();
-                const grid = document.getElementById('faq-grid');
-                if (!grid || !data.faqs) return;
-                const col1 = data.faqs.slice(0, 6);
-                const col2 = data.faqs.slice(6, 12);
-                const renderFAQs = (faqs) => faqs.map(faq => `
-                    <div class="faq-item border-b border-gray-200 py-5 cursor-pointer">
-                        <div class="flex justify-between items-center gap-4">
-                            <span class="text-[#333] font-semibold text-base leading-snug">${faq.question}</span>
-                            <span class="faq-icon text-[#DB4155] text-2xl font-bold leading-none flex-shrink-0">+</span>
-                        </div>
-                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
-                            <div class="pt-3 text-[#666] text-sm leading-relaxed">${faq.answer}</div>
-                        </div>
-                    </div>
-                `).join('');
-                grid.innerHTML = `<div>${renderFAQs(col1)}</div><div>${renderFAQs(col2)}</div>`;
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.addEventListener('click', () => {
-                        const answer = item.querySelector('.faq-answer');
-                        const icon = item.querySelector('.faq-icon');
-                        const isOpen = item.classList.contains('faq-open');
-                        item.classList.toggle('faq-open');
-                        if (!isOpen) {
-                            answer.style.maxHeight = answer.scrollHeight + 'px';
-                            icon.textContent = '×';
-                        } else {
-                            answer.style.maxHeight = '0';
-                            icon.textContent = '+';
-                        }
-                    });
-                });
-            } catch (e) { console.error('Failed to load FAQs:', e); }
-        }
-        document.addEventListener('DOMContentLoaded', loadFAQs);
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('.faq-icon');
+                const isOpen = item.classList.contains('faq-open');
+                item.classList.toggle('faq-open');
+                if (!isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.textContent = '×';
+                } else {
+                    answer.style.maxHeight = '0';
+                    icon.textContent = '+';
+                }
+            });
+        });
     </script>
 
     <!-- Contact Form (Tailwind CSS) -->
