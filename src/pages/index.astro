@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import homeContent from '../content/pages/home.json';
 
 // Fetch retailer and FAQ data from API at BUILD TIME (server-side, no CORS)
 let apiRetailers = [];
@@ -24,9 +25,9 @@ try {
     <section class="hero" id="home">
         <div class="hero-content container">
             <div class="hero-text">
-                <h1>Experience outdoor cooking, Reinvented.</h1>
-                <p>Introducing the Frigidaire Dual Element Electric Grill � Power, Precision, and Style for Modern Outdoor Living.</p>
-                <a href="/home-page/freestanding-folding-electric-dual-element-grill-guide-overview/" class="btn" aria-label="Learn more about the Frigidaire Dual Element Electric Grill">Learn more</a>
+                <h1>{homeContent.hero_title_en}</h1>
+                <p>{homeContent.hero_subtitle_en}</p>
+                <a href="/home-page/freestanding-folding-electric-dual-element-grill-guide-overview/" class="btn" aria-label="Learn more about the Frigidaire Dual Element Electric Grill">{homeContent.hero_btn_text_en}</a>
             </div>
         </div>
     </section>
