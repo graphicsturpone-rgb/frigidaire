@@ -24,21 +24,28 @@ const faqs = await getCollection('faqs', ({ data }) => {
     </section>
 
     <!-- Welcome Section -->
-    <section class="welcome">
-        <div class="container">
-            <div class="welcome-content">
-                <div>
-                    <h2>WELCOME<br/>TO FRIGIDAIRE<br/><span>OUTDOOR LIVING</span></h2>
-                </div>
-                <div class="welcome-text">
-                    <h3>Where innovation meets the open air.</h3>
-                    <p>Building on over 100 years of trusted performance, Frigidaire is stepping outside � creating durable, high-performance outdoor solutions designed for effortless living.</p>
-                </div>
+    <!-- Welcome Section Redesign -->
+    <section class="welcome" style="background: white; padding: 100px 0;">
+        <div style="max-width: 1300px; margin: 0 auto; padding: 0 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 80px;">
+            <!-- Left Text -->
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="font-size: 42px; font-weight: 800; line-height: 1.3; color: #333; margin: 0;">
+                    WELCOME<br/>
+                    TO FRIGIDAIRE<br/>
+                    <span style="color: #DB4155;">OUTDOOR LIVING</span>
+                </h2>
+            </div>
+            
+            <!-- Right Text -->
+            <div style="flex: 1.2; min-width: 300px; padding-top: 10px;">
+                <h3 style="font-size: 18px; font-weight: 700; color: #333; margin-bottom: 15px;">Where innovation meets the open air.</h3>
+                <p style="font-size: 15px; color: #555; line-height: 1.8; margin: 0; max-width: 650px;">
+                    Building on over 100 years of trusted performance, Frigidaire is stepping outside — creating durable, high-performance outdoor solutions designed for effortless living.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Product Features -->
     <!-- Product Features Redesign -->
     <section class="innovations-redesign" style="background: #f8f8f8; overflow: hidden; padding-bottom: 60px;">
         <div class="section-header" style="text-align: center; margin-bottom: 0;">
