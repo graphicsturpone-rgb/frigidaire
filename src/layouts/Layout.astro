@@ -37,54 +37,7 @@ import '../styles/global.css';
             padding: 0 20px;
         }
 
-        /* Header */
-        header {
-            background: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #333;
-            text-decoration: none;
-            letter-spacing: 2px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            font-size: 14px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #DB4155;
-        }
-
-        .lang-switcher {
-            font-weight: 600;
-            cursor: pointer;
-        }
+        /* Header styles removed to avoid conflict with shared-header.js */
 
         /* Hero Section */
         .hero {
@@ -1014,15 +967,9 @@ import '../styles/global.css';
 
 </head>
 <body>
-    <header>
-
-    </header>
     <main id="main-content">
         <slot />
     </main>
-    <footer class="site-footer">
-
-    </footer>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
