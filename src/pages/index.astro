@@ -44,46 +44,49 @@ const faqs = await getCollection('faqs', ({ data }) => {
         </div>
     </section>
 
-    <!-- Product Features Redesign -->
-    <section class="innovations-redesign" style="background: #f8f8f8; overflow: hidden; padding-bottom: 60px;">
-        <div class="section-header" style="text-align: center; margin-bottom: 0;">
-            <div class="section-title" style="background: #DB4155; color: white; padding: 15px 30px; display: block; width: 100%; font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">MEET OUR FAMILY-FIRST INNOVATIONS</div>
-        </div>
-        
-        <div style="max-width: 1400px; margin: 60px auto 0; padding: 0 40px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px;">
+    <!-- Weather Resistant Design Section (Tailwind CSS) -->
+<!-- Weather Resistant Design Video Section -->
+    <section class="bg-[#f8f8f8] py-20 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-8 md:px-12 grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
             
             <!-- Left Text -->
-            <div style="flex: 1; min-width: 280px; max-width: 350px;">
-                <h2 style="font-size: 52px; font-weight: 900; line-height: 1.1; margin: 0; text-transform: uppercase;">
-                    <span style="color: #DB4155; display: block;">Weather Resistant</span>
-                    <span style="color: #DB4155; display: block;">Design</span>
-                    <span style="color: #555; display: block; font-size: 42px; margin-top: 10px;">with Energy</span>
-                    <span style="color: #555; display: block; font-size: 42px;">Efficiency</span>
+            <div class="flex flex-col justify-center lg:pr-8">
+                <h2 class="text-5xl md:text-6xl font-extrabold text-[#DB4155] leading-[1.1] uppercase font-['Gotham',sans-serif] tracking-tight">
+                    WEATHER<br/>
+                    RESISTANT<br/>
+                    DESIGN
                 </h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-[#555555] leading-tight uppercase font-['Gotham',sans-serif] mt-4">
+                    WITH<br/>
+                    ENERGY<br/>
+                    EFFICIENCY
+                </h3>
             </div>
 
-            <!-- Center Content (Grill + Slider) -->
-            <div style="flex: 2; min-width: 400px; text-align: center; position: relative;">
-                <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-FrontFace.webp" alt="Weather Resistant Grill" loading="lazy" style="max-width: 100%; height: auto; margin-top: -20px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));" />
-                
-                <!-- Mini Slider Container -->
-                <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 20px;">
-                    <div style="color: #DB4155; font-size: 30px; cursor: pointer;">&#10094;</div>
-                    <img src="/wp-content/uploads/2026/01/OPEN-HEATED-GRILL-1.webp" alt="Grill Feature" style="width: 300px; height: 220px; object-fit: cover; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" />
-                    <img src="/wp-content/uploads/2026/01/ELEC-Grill-PROFILE-BackFace.webp" alt="Grill Feature" style="width: 300px; height: 220px; object-fit: cover; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" />
-                    <div style="color: #DB4155; font-size: 30px; cursor: pointer;">&#10095;</div>
+            <!-- Middle Video -->
+            <div class="flex justify-center items-center relative z-10">
+                <div class="bg-white p-6 shadow-[0_20px_50px_rgba(0,0,0,0.1)] w-full max-w-[500px]">
+                    <video 
+                        src="https://media.frigidaireoutdoorliving.com/ENG-LAST-FEATURES-VID.mp4" 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline 
+                        class="w-full h-auto object-cover"
+                    ></video>
                 </div>
             </div>
 
             <!-- Right Text -->
-            <div style="flex: 1; min-width: 250px; max-width: 300px; font-size: 20px; color: #444; font-weight: 500; line-height: 1.6; padding-top: 20px;">
-                <p>IPx4 water-resistant design with UL certification for safe, year-rounded outdoor use.</p>
+            <div class="flex flex-col justify-start lg:pl-8 pt-8 lg:pt-0">
+                <p class="text-[#444444] text-lg md:text-xl font-medium leading-relaxed font-['Gotham',sans-serif]">
+                    IPx4 water-resistant design with UL certification for safe, year-rounded outdoor use.
+                </p>
             </div>
-            
+
         </div>
     </section>
 
-    <!-- Getting Started Tabs -->
     <section class="getting-started">
         <div class="getting-started-header">GETTING STARTED WITH YOUR GRILL</div>
         <div class="tabs">
@@ -209,4 +212,4 @@ const faqs = await getCollection('faqs', ({ data }) => {
     </section>
 
     
-</Layout>
+</Layout><div class="text-9xl bg-purple-500">TEST</div>
