@@ -4,11 +4,84 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
-    <!-- Link to the config file -->
-    <link href="config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
   <body>
     <!-- Decap CMS Script from jsDelivr CDN -->
     <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.1.2/dist/decap-cms.js"></script>
+    <script>
+      // Disable auto init
+      window.CMS_MANUAL_INIT = true;
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const origin = window.location.origin;
+
+        // Initialize Decap CMS with dynamic base_url pointing to current site origin
+        CMS.init({
+          config: {
+            backend: {
+              name: 'github',
+              repo: 'graphicsturpone-rgb/frigidaire',
+              branch: 'main',
+              base_url: origin
+            },
+            local_backend: true,
+            media_folder: 'public/wp-content/uploads',
+            public_folder: '/wp-content/uploads',
+            collections: [
+              {
+                name: 'retailers',
+                label: 'Retailers',
+                folder: 'src/content/retailers',
+                create: true,
+                slug: '{{slug}}',
+                fields: [
+                  { label: 'Name', name: 'name', widget: 'string' },
+                  { label: 'Availability (EN)', name: 'availability', widget: 'string' },
+                  { label: 'Availability (FR)', name: 'availability_fr', widget: 'string', required: false },
+                  { label: 'URL', name: 'url', widget: 'string' },
+                  { label: 'Default Image URL', name: 'default_image_url', widget: 'string', required: false },
+                  { label: 'Hover Image URL', name: 'hover_image_url', widget: 'string', required: false },
+                  { label: 'Hover BG Color', name: 'hover_bg_color', widget: 'string', default: '#DB4155' },
+                  { label: 'Display Order', name: 'display_order', widget: 'number', value_type: 'int' },
+                  { label: 'Country Code', name: 'country_code', widget: 'select', options: ['ca', 'us'] }
+                ]
+              },
+              {
+                name: 'faqs',
+                label: 'FAQs',
+                folder: 'src/content/faqs',
+                create: true,
+                slug: '{{slug}}',
+                fields: [
+                  { label: 'Question', name: 'question', widget: 'string' },
+                  { label: 'Answer', name: 'answer', widget: 'text' },
+                  { label: 'Language', name: 'language', widget: 'select', options: ['en', 'fr'] },
+                  { label: 'Display Order', name: 'display_order', widget: 'number', value_type: 'int' }
+                ]
+              },
+              {
+                name: 'pages',
+                label: 'Pages',
+                files: [
+                  {
+                    file: 'src/content/pages/home.json',
+                    label: 'Home Page Content',
+                    name: 'home',
+                    fields: [
+                      { label: 'Hero Title (EN)', name: 'hero_title_en', widget: 'string' },
+                      { label: 'Hero Subtitle (EN)', name: 'hero_subtitle_en', widget: 'string' },
+                      { label: 'Hero Button Text (EN)', name: 'hero_btn_text_en', widget: 'string' },
+                      { label: 'Hero Title (FR)', name: 'hero_title_fr', widget: 'string' },
+                      { label: 'Hero Subtitle (FR)', name: 'hero_subtitle_fr', widget: 'string' },
+                      { label: 'Hero Button Text (FR)', name: 'hero_btn_text_fr', widget: 'string' }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        });
+      });
+    </script>
   </body>
 </html>
