@@ -26,20 +26,21 @@ const faqs = await getCollection('faqs', ({ data }) => {
     <!-- Welcome Section -->
     <!-- Welcome Section Redesign -->
     <!-- Welcome Section Redesign -->
-    <section class="welcome" style="background: white; padding: 100px 0;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center;">
-            <div>
-                <h2 style="font-family: 'Montserrat', 'Gotham', sans-serif; font-size: 46px; font-weight: 800; line-height: 1.2; color: #2A2A2A; margin: 0; text-transform: uppercase; letter-spacing: 0.5px;">
-                    WELCOME<br>
-                    TO FRIGIDAIRE<br>
-                    <span style="color: #DB4155;">OUTDOOR LIVING</span>
+    <!-- Welcome Section Redesign (Tailwind CSS) -->
+    <section class="bg-white py-24 px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div class="flex flex-col">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-[#333333] leading-tight uppercase font-['Gotham',sans-serif]">
+                    WELCOME<br/>
+                    TO FRIGIDAIRE<br/>
+                    <span class="text-[#DB4155]">OUTDOOR LIVING</span>
                 </h2>
             </div>
-            <div style="padding-left: 20px;">
-                <h3 style="font-family: 'Montserrat', 'Gotham', sans-serif; font-size: 18px; font-weight: 700; color: #333; margin-bottom: 20px;">
+            <div class="flex flex-col gap-4">
+                <h3 class="text-xl md:text-2xl font-bold text-[#333333] font-['Gotham',sans-serif]">
                     L'o&#249; l'innovation rencontre le plein air.
                 </h3>
-                <p style="font-family: 'Montserrat', 'Gotham', sans-serif; font-size: 15px; color: #666; line-height: 1.8; margin: 0;">
+                <p class="text-[#666666] text-base leading-relaxed font-['Gotham',sans-serif]">
                     Avec plus de 100 ans de performance reconnue, Frigidaire sort &#224; l'ext&#233;rieur &mdash; en cr&#233;ant des solutions ext&#233;rieures durables et hautement performantes, con&#231;ues pour une vie sans effort.
                 </p>
             </div>
