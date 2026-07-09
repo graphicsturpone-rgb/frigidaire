@@ -311,42 +311,90 @@ const faqs = await getCollection('faqs', ({ data }) => {
         document.addEventListener('DOMContentLoaded', loadRetailers);
     </script>
 
-    <!-- FAQ Section -->
-    <section class="faq-section" id="faq">
-        <div class="container">
-            <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 10px;">FREQUENTLY</h2>
-            <h3 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">ASKED <span style="color: #DB4155;">QUESTIONS</span></h3>
-            <div class="faq-grid" id="faq-container">
-                <!-- FAQs loaded dynamically -->
+    <!-- FAQ Section (Tailwind CSS) -->
+    <section class="bg-[#f9f9f9] py-20" id="faq">
+        <div class="max-w-7xl mx-auto px-5 md:px-10">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-[#333] mb-2 uppercase font-['Gotham',sans-serif]">FREQUENTLY</h2>
+            <h3 class="text-2xl md:text-3xl font-bold text-[#333] mb-12 uppercase font-['Gotham',sans-serif]">ASKED <span class="text-[#DB4155]">QUESTIONS</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0" id="faq-grid">
+                <!-- FAQs injected by JS -->
             </div>
         </div>
     </section>
 
-    <!-- Contact Form -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2>HAVE <span>AN OTHER QUESTION?</span></h2>
-                <h3>Fill Out the Form.</h3>
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="firstName" placeholder="First name" required />
+    <script>
+        async function loadFAQs() {
+            try {
+                const res = await fetch('https://frigidaire-api.franco-p.workers.dev/api/faqs?lang=en');
+                const data = await res.json();
+                const grid = document.getElementById('faq-grid');
+                if (!grid || !data.faqs) return;
+
+                const col1 = data.faqs.slice(0, 6);
+                const col2 = data.faqs.slice(6, 12);
+
+                const renderFAQs = (faqs) => faqs.map(faq => `
+                    <div class="faq-item border-b border-gray-200 py-5 cursor-pointer" onclick="this.classList.toggle('faq-open')">
+                        <div class="flex justify-between items-center gap-4">
+                            <span class="text-[#333] font-semibold text-base leading-snug">${faq.question}</span>
+                            <span class="faq-icon text-[#DB4155] text-2xl font-bold leading-none flex-shrink-0 transition-transform duration-300">+</span>
+                        </div>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                            <div class="pt-3 text-[#666] text-sm leading-relaxed">${faq.answer}</div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="lastName" placeholder="Last name" required />
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="E-mail" required />
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Your message" rows="5" required></textarea>
-                    </div>
-                    <div id="cf-turnstile-contact" class="cf-turnstile" data-sitekey="0x4AAAAAADJQp0TJa6LotiLr" data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError" data-expired-callback="onTurnstileExpired"></div>
-                    <button type="submit" class="submit-btn" id="contact-submit-btn">Send</button>
+                `).join('');
+
+                grid.innerHTML = `<div>${renderFAQs(col1)}</div><div>${renderFAQs(col2)}</div>`;
+
+                // Toggle open state
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const answer = item.querySelector('.faq-answer');
+                        const icon = item.querySelector('.faq-icon');
+                        const isOpen = item.classList.contains('faq-open');
+                        if (isOpen) {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                            requestAnimationFrame(() => { answer.style.maxHeight = '0'; });
+                            icon.textContent = '+';
+                            icon.style.transform = 'rotate(0deg)';
+                        } else {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                            icon.textContent = '×';
+                            icon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                });
+
+            } catch (e) {
+                console.error('Failed to load FAQs:', e);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', loadFAQs);
+    </script>
+
+    <!-- Contact Form (Tailwind CSS) -->
+    <section class="bg-white py-20" id="contact">
+        <div class="max-w-7xl mx-auto px-5 md:px-10">
+            <div class="max-w-xl">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-[#333] mb-2 uppercase font-['Gotham',sans-serif]">HAVE <span class="text-[#DB4155]">AN OTHER QUESTION?</span></h2>
+                <h3 class="text-2xl font-bold text-[#333] mb-10 font-['Gotham',sans-serif]">Fill Out the Form.</h3>
+                <form id="contact-form" class="flex flex-col gap-4">
+                    <input type="text" name="firstName" placeholder="First name" required
+                           class="w-full border border-gray-300 rounded px-4 py-3 text-[#333] text-sm outline-none focus:border-[#DB4155] transition-colors" />
+                    <input type="text" name="lastName" placeholder="Last name" required
+                           class="w-full border border-gray-300 rounded px-4 py-3 text-[#333] text-sm outline-none focus:border-[#DB4155] transition-colors" />
+                    <input type="email" name="email" placeholder="E-mail" required
+                           class="w-full border border-gray-300 rounded px-4 py-3 text-[#333] text-sm outline-none focus:border-[#DB4155] transition-colors" />
+                    <textarea name="message" placeholder="Your message" rows="5" required
+                              class="w-full border border-gray-300 rounded px-4 py-3 text-[#333] text-sm outline-none focus:border-[#DB4155] transition-colors resize-none"></textarea>
+                    <div id="cf-turnstile-contact" class="cf-turnstile" data-sitekey="0x4AAAAAADJQp0TJa6LotiLr"
+                         data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError" data-expired-callback="onTurnstileExpired"></div>
+                    <button type="submit" id="contact-submit-btn"
+                            class="w-32 bg-[#DB4155] text-white font-bold py-3 px-6 rounded-full uppercase text-sm tracking-wide hover:bg-[#c23648] transition-colors">Send</button>
                 </form>
             </div>
         </div>
     </section>
 
-    
-</Layout><div class="text-9xl bg-purple-500">TEST</div>
+</Layout>
