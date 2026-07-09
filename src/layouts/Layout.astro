@@ -866,84 +866,120 @@ const { title, lang } = Astro.props;
         }
     
 
-        /* Redesigned Innovations Section */
+        
+        /* Awesome Innovations Redesign */
         .innovations-redesign {
-            background: #f8f8f8;
+            background: #ffffff;
+        }
+        .innovations-main {
+            background: #f4f4f4;
+            padding: 80px 0 100px 0;
             position: relative;
-            padding-bottom: 50px;
+            overflow: hidden;
         }
-        .innovations-content {
-            max-width: 1300px;
+        .innovations-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 60px 20px 20px 20px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
         }
-        .innovations-text-grid {
+        .innovations-text-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: -150px;
-            position: relative;
-            z-index: 2;
         }
         .innovations-title h2 {
-            font-size: 52px;
-            line-height: 1.1;
+            font-size: 72px;
+            line-height: 1.05;
+            font-weight: 900;
+            text-transform: uppercase;
             letter-spacing: -0.02em;
+            margin: 0;
+        }
+        .text-solid-red {
+            color: #DB4155;
+            display: block;
+        }
+        .text-hollow {
+            color: transparent;
+            -webkit-text-stroke: 2px #b0b0b0;
+            display: block;
         }
         .innovations-desc {
-            max-width: 350px;
-            font-size: 16px;
-            color: #666;
-            font-weight: 600;
+            max-width: 400px;
+            padding-top: 15px;
+        }
+        .innovations-desc p {
+            font-size: 20px;
+            color: #444;
+            font-weight: 500;
             line-height: 1.5;
-            padding-top: 10px;
         }
-        .innovations-center-image {
-            text-align: center;
+        .innovations-grill-image {
             position: relative;
-            z-index: 1;
+            z-index: 5;
+            text-align: center;
+            margin-top: -100px; /* Pull the grill up behind/around the text slightly */
         }
-        .innovations-center-image img {
-            max-width: 75%;
+        .innovations-grill-image img {
+            max-width: 1100px;
+            width: 100%;
             height: auto;
             display: inline-block;
         }
-        .mini-carousel-container {
+        .innovations-slider-wrapper {
             max-width: 900px;
-            margin: 40px auto 0;
+            margin: -60px auto 0;
             position: relative;
-            padding: 0 50px;
+            z-index: 10;
+            padding: 0 60px;
         }
-        .miniSwiper {
+        .innovations-slider-wrapper .miniSwiper {
             width: 100%;
-        }
-        .miniSwiper .swiper-slide {
-            text-align: center;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         .miniSwiper .swiper-slide img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            border-radius: 8px;
+            display: block;
         }
         .mini-prev, .mini-next {
-            color: #DB4155;
-            --swiper-navigation-size: 24px;
+            color: #DB4155 !important;
+            --swiper-navigation-size: 32px;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        .mini-prev {
+            left: 0;
+        }
+        .mini-next {
+            right: 0;
+        }
+        
+        @media (max-width: 1024px) {
+            .innovations-title h2 { font-size: 50px; }
+            .innovations-grill-image img { max-width: 900px; }
+        }
+        
         @media (max-width: 768px) {
-            .innovations-text-grid {
+            .innovations-text-wrapper {
                 flex-direction: column;
-                margin-bottom: 0;
                 text-align: center;
             }
-            .innovations-title h2 {
-                font-size: 36px;
-            }
-            .innovations-desc {
-                margin: 20px auto 0;
-            }
-            .innovations-center-image img {
-                max-width: 100%;
-            }
+            .innovations-title h2 { font-size: 40px; }
+            .innovations-desc { max-width: 100%; margin-top: 20px; }
+            .innovations-grill-image { margin-top: 0; }
+            .innovations-slider-wrapper { margin-top: 20px; padding: 0 40px; }
+            .mini-prev, .mini-next { transform: scale(0.8); }
         }
 
     </style>
